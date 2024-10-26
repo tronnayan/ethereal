@@ -43,3 +43,14 @@ class Listing(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+def create_new_listing(name: str, description: str, images: list, price: int):
+    listing = Listing.objects.create(
+        name=name,
+        description=description,
+        images={'images': images},
+        price=price
+    )
+    return listing.name
+
