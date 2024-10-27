@@ -31,7 +31,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -39,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'rest_framework',
-    'django_extensions'
+    'django_extensions',
+    'suit',
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+SUIT_CONFIG = {
+    "ADMIN_NAME": "Ethereal",
+    "MENU": (
+        "sites",
+        {"app": "core", "label": "Core", "icon": "icon-leaf"},
+        {"app": "auth", "label": "Authorization", "icon": "icon-lock"},
+        {"app": "default", "label": "System Settings", "icon": "icon-ban-circle"},
+        {"app": "django_celery_beat", "label": "Celery", "icon": "icon-th-large"},
+    ),
+    "MENU_OPEN_FIRST_CHILD": False,
+}
 ROOT_URLCONF = 'Ethereal.urls'
 
 TEMPLATES = [
