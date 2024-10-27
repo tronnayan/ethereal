@@ -15,6 +15,6 @@ class CoreViewSet(ViewSet):
         listing_categories = ListingCategory.objects.all().order_by('pk')
         context = {
             "listings": listings,
-            "listing_categories": listing_categories
+            "listing_categories": list(listing_categories) * 2
         }
         return render(request, 'landing.html', context)
