@@ -61,3 +61,6 @@ class Listing(BaseModel):
 class ListingCategory(BaseModel):
     name = models.CharField(max_length=100)
     logo = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.name
