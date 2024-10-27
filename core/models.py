@@ -40,6 +40,7 @@ class Listing(BaseModel):
     wright = models.FloatField(default=0.5)
     dimensions = models.CharField(default=None, null=True, max_length=1000)
     listing_tags = models.ManyToManyField(ListingTag, related_name='tags')
+    is_featured = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
