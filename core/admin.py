@@ -4,7 +4,7 @@ from django.contrib import admin
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 
-from .models import ListingTag, Listing
+from .models import ListingTag, Listing, ListingImage
 
 
 @admin.register(ListingTag)
@@ -43,3 +43,22 @@ class ListingAdmin(admin.ModelAdmin):
     )
     search_fields = ('name',)
     readonly_fields = ('video_url', 'sample_link', 'weight', 'dimensions', 'listing_tags')
+
+
+@admin.register(ListingImage)
+class ListingImageAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'is_active',
+        'image_url',
+        'listing',
+        'is_primary',
+    )
+    list_filter = (
+        'created_at',
+        'modified_at',
+        'is_deleted',
+        'is_active',
+        'listing',
+        'is_primary',
+    )
