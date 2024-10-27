@@ -37,7 +37,7 @@ class Listing(BaseModel):
     shipping_charges = models.IntegerField(default=50)
     sample_link = models.URLField(default=None, null=True)
     video_url = models.URLField(default=None, null=True)
-    wright = models.FloatField(default=0.5)
+    weight = models.FloatField(default=0.5)
     dimensions = models.CharField(default=None, null=True, max_length=1000)
     listing_tags = models.ManyToManyField(ListingTag, related_name='tags')
     is_featured = models.BooleanField(default=False)
