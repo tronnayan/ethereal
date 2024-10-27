@@ -50,9 +50,11 @@ class Listing(BaseModel):
     listing_tags = models.ManyToManyField(ListingTag, related_name='tags')
     is_featured = models.BooleanField(default=False)
     category = models.ForeignKey('ListingCategory', related_name='items', on_delete=models.CASCADE, null=True)
+    default_color = models.CharField(default=None, null=True, max_length=100)
 
     def get_primary_image(self):
         return self.images.filter(is_primary=True).first().image_url
+
 
     def __str__(self):
         return self.name

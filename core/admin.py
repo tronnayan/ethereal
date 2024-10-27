@@ -40,6 +40,7 @@ class ListingAdmin(ModelAdminMod):
         'price',
         'shipping_charges',
         'is_featured',
+        'default_color'
     )
     list_filter = (
         'created_at',
