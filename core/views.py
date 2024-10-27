@@ -11,7 +11,7 @@ class CoreViewSet(ViewSet):
         pass
 
     def get_landing_page(self, request):
-        listings = Listing.objects.all()
+        listings = Listing.objects.all().order_by('-pk')
         context = {
             "listings": listings
         }
