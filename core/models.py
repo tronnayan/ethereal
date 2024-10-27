@@ -31,7 +31,8 @@ class ListingTag(BaseModel):
 
 class ListingImage(BaseModel):
     image_url = models.CharField(max_length=400)
-    listing = models.ForeignKey('Listing', related_name='images')
+    listing = models.ForeignKey('Listing', related_name='images', on_delete=models.CASCADE)
+    is_primary = models.BooleanField(default=False)
 
     def __str__(self):
         return self.listing.name
@@ -40,7 +41,6 @@ class ListingImage(BaseModel):
 class Listing(BaseModel):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=1000, null=True)
-    images = models.JSONField(default=dict, null=True)
     price = models.IntegerField(default=50)
     shipping_charges = models.IntegerField(default=50)
     sample_link = models.URLField(default=None, null=True)
