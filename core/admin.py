@@ -1,14 +1,22 @@
 from django.contrib import admin
 
-# Register your models here.
-# -*- coding: utf-8 -*-
-from django.contrib import admin
-
 from .models import ListingTag, Listing, ListingImage
 
 
+class ModelAdminMod(admin.ModelAdmin):
+    """
+    This helps display the is_deleted objects in admin
+    """
+    def get_queryset(self, request):
+        qs = self.model.admin_manager.get_queryset()
+        ordering = self.get_ordering(request)
+        if ordering:
+            qs = qs.order_by(*ordering)
+        return qs
+
+
 @admin.register(ListingTag)
-class ListingTagAdmin(admin.ModelAdmin):
+class ListingTagAdmin(ModelAdminMod):
     list_display = (
         'id',
         'created_at',
@@ -23,13 +31,12 @@ class ListingTagAdmin(admin.ModelAdmin):
 
 
 @admin.register(Listing)
-class ListingAdmin(admin.ModelAdmin):
+class ListingAdmin(ModelAdminMod):
     list_display = (
         'id',
         'is_active',
         'name',
         'description',
-        'images',
         'price',
         'shipping_charges',
         'is_featured',
@@ -46,7 +53,7 @@ class ListingAdmin(admin.ModelAdmin):
 
 
 @admin.register(ListingImage)
-class ListingImageAdmin(admin.ModelAdmin):
+class ListingImageAdmin(ModelAdminMod):
     list_display = (
         'id',
         'is_active',
