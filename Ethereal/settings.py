@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'suit',
     'django.contrib.admin',
+    'django_admin_generator'
 ]
 
 MIDDLEWARE = [
