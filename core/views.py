@@ -13,7 +13,6 @@ class CoreViewSet(ViewSet):
     def get_landing_page(self, request):
         listings = Listing.objects.all()
         context = {
-            "listings": listings,
-            "images": [image for obj in listings for image in obj.images['images']]
+            "listings": listings
         }
         return render(request, 'landing.html', context)

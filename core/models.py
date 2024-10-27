@@ -50,6 +50,9 @@ class Listing(BaseModel):
     listing_tags = models.ManyToManyField(ListingTag, related_name='tags')
     is_featured = models.BooleanField(default=False)
 
+    def get_primary_image(self):
+        return self.images.filter(is_primary=True).first().image_url
+
     def __str__(self):
         return self.name
 
