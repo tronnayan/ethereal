@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ViewSet
 
+from core.models import Listing
+
 
 class CoreViewSet(ViewSet):
     permission_classes = []
@@ -9,4 +11,9 @@ class CoreViewSet(ViewSet):
         pass
 
     def get_landing_page(self, request):
-        return render(request, 'index.html', {})
+        listings = Listing.objects.all()
+        context = {
+            "listings": listings,
+            "images": [image for obj in listings for image in obj.images['images']]
+        }
+        return render(request, 'landing.html', context)
