@@ -29,6 +29,14 @@ class ListingTag(BaseModel):
         return self.name
 
 
+class ListingImage(BaseModel):
+    image_url = models.CharField(max_length=400)
+    listing = models.ForeignKey('Listing', related_name='images')
+
+    def __str__(self):
+        return self.listing.name
+
+
 class Listing(BaseModel):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=1000, null=True)
