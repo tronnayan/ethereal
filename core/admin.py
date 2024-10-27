@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ListingTag, Listing, ListingImage
+from .models import ListingTag, Listing, ListingImage, ListingCategory
 
 
 class ModelAdminMod(admin.ModelAdmin):
@@ -68,4 +68,18 @@ class ListingImageAdmin(ModelAdminMod):
         'is_active',
         'listing',
         'is_primary',
+    )
+
+
+@admin.register(ListingCategory)
+class ListingCategoryAdmin(ModelAdminMod):
+    list_display = (
+        'id',
+        'is_active',
+        'logo',
+        'name'
+    )
+    list_filter = (
+        'is_deleted',
+        'is_active'
     )
