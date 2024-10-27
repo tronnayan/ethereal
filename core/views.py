@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ViewSet
 
-from core.models import Listing
+from core.models import Listing, ListingCategory
 
 
 class CoreViewSet(ViewSet):
@@ -11,8 +11,10 @@ class CoreViewSet(ViewSet):
         pass
 
     def get_landing_page(self, request):
-        listings = Listing.objects.all().order_by('-pk')
+        listings = Listing.objects.all().select_related('category').order_by('-pk')
+        listing_categories = ListingCategory.objects.all().order_by('pk')
         context = {
-            "listings": listings
+            "listings": listings,
+            "listing_categories": listing_categories
         }
         return render(request, 'landing.html', context)
