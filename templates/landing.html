@@ -1,5 +1,56 @@
 {% extends 'base.html' %}
 
+{% block css_content %}
+    <style>
+        .hero-artistic-bg {
+            position: relative;
+            overflow: hidden;
+            background-image: url('static/assets/artistic-hero-bg.svg');
+        }
+
+        .hero-artistic-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.15; /* Increased from 0.1 */
+            transition: all 0.5s ease;
+        }
+
+        .hero-artistic-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.12; /* Increased from 0.08 */
+            transition: all 0.5s ease;
+            mix-blend-mode: multiply;
+            z-index: 0;
+        }
+
+        .swiper-slide-custom img {
+            position: relative;
+            z-index: 1;
+        }
+
+        .swiper#captions .swiper-slide-custom {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .swiper#captions .swiper-slide-active {
+            opacity: 1;
+        }
+
+        .swiper#captions .fade-content {
+            transition: opacity 0.3s ease;
+        }
+    </style>
+{% endblock %}
 {% block body_content %}
         <!-- Hero slider -->
     <section class="hero-artistic-bg bg-body-tertiary min-vh-100 d-flex align-items-center overflow-hidden"
