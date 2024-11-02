@@ -1,43 +1,140 @@
-// Cart management class
 class ShoppingCart {
     constructor() {
         this.items = this.loadCart();
         this.bindEvents();
         this.updateCartUI();
+        this.updateCartBadge();
     }
 
     loadCart() {
         const savedCart = localStorage.getItem('shopping-cart');
         return savedCart ? JSON.parse(savedCart) : [];
     }
+    updateCartBadge() {
+        const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
+        const cartButton = document.querySelector('[data-bs-toggle="offcanvas"][data-bs-target="#shoppingCart"]');
 
+        if (cartButton) {
+            // Remove existing badge if any
+            const existingBadge = cartButton.querySelector('.badge');
+            if (existingBadge) {
+                existingBadge.remove();
+            }
+
+            // Only add badge if there are items
+            if (totalItems > 0) {
+                const badge = document.createElement('span');
+                badge.className = 'badge d-flex text-bg-info position-absolute top-0 start-100 translate-middle rounded-pill';
+                badge.style.fontSize = '0.75rem';  // Adjust size to match your design
+                badge.style.minWidth = '1.5rem';   // Ensure minimum width for single digits
+                badge.innerHTML = totalItems > 99 ? '99+' : totalItems;
+
+                // Add some extra styling for better positioning
+                badge.style.transform = 'translate(-50%, -50%)';
+
+                // Make sure the button has position relative for absolute positioning of badge
+                cartButton.style.position = 'relative';
+
+                cartButton.appendChild(badge);
+            }
+        }
+    }
     saveCart() {
         localStorage.setItem('shopping-cart', JSON.stringify(this.items));
         this.updateCartUI();
+        this.updateCartBadge();
     }
 
     formatPrice(price) {
         return '₹' + parseFloat(price).toLocaleString('en-IN');
     }
 
-    addItem(itemData) {
-        const existingItem = this.items.find(item => item.id === itemData.id);
+    async addItem(itemData, button) {
+        // Show loading state
+        this.setButtonLoading(button);
 
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            this.items.push({
-                id: itemData.id,
-                name: itemData.name,
-                price: itemData.price,
-                image: itemData.image,
-                quantity: 1,
-                originalPrice: itemData.originalPrice
-            });
+        try {
+            // Simulate network delay (remove this in production)
+            await new Promise(resolve => setTimeout(resolve, 800));
+
+            const existingItem = this.items.find(item => item.id === itemData.id);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                this.items.push({
+                    id: itemData.id,
+                    name: itemData.name,
+                    price: itemData.price,
+                    image: itemData.image,
+                    quantity: 1
+                });
+            }
+
+            this.saveCart();
+            this.setButtonSuccess(button);
+
+            // Reset button after 2 seconds
+            setTimeout(() => {
+                this.resetButton(button);
+            }, 2000);
+
+        } catch (error) {
+            console.error('Error adding item to cart:', error);
+            this.setButtonError(button);
+        }
+    }
+
+    setButtonLoading(button) {
+        if (!button) return;
+
+        const originalContent = button.innerHTML;
+        if (!button.dataset.originalContent) {
+            button.dataset.originalContent = originalContent;
         }
 
-        this.saveCart();
-        this.showAddedToCartToast();
+        button.classList.add('pe-none');
+        button.innerHTML = `
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            Adding to cart...
+        `;
+    }
+
+    setButtonSuccess(button) {
+        if (!button) return;
+
+        button.classList.remove('pe-none');
+        button.innerHTML = `
+            <i class="ci-check-circle me-2"></i>
+            Added to cart!
+        `;
+        button.classList.remove('btn-dark');
+        button.classList.add('btn-success');
+    }
+
+    setButtonError(button) {
+        if (!button) return;
+
+        button.classList.remove('pe-none');
+        button.innerHTML = `
+            <i class="ci-close-circle me-2"></i>
+            Failed to add
+        `;
+        button.classList.remove('btn-dark');
+        button.classList.add('btn-danger');
+
+        setTimeout(() => {
+            this.resetButton(button);
+        }, 2000);
+    }
+
+    resetButton(button) {
+        if (!button) return;
+
+        button.classList.remove('pe-none');
+        button.innerHTML = button.dataset.originalContent;
+        button.classList.remove('btn-success', 'btn-danger');
+        button.classList.add('btn-dark');
     }
 
     removeItem(itemId) {
@@ -77,6 +174,37 @@ class ShoppingCart {
         `;
     }
 
+    bindEvents() {
+        document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+            button.addEventListener('click', async (e) => {
+                const button = e.currentTarget;
+                const productContainer = button.closest('[data-product]');
+                if (productContainer) {
+                    const productData = {
+                        id: productContainer.dataset.productId,
+                        name: productContainer.dataset.productName,
+                        price: parseFloat(productContainer.dataset.productPrice),
+                        image: productContainer.dataset.productImage
+                    };
+                    await this.addItem(productData, button);
+                }
+            });
+        });
+    }
+
+    updateQuantity(itemId, newQuantity) {
+        if (newQuantity < 1) {
+            this.removeItem(itemId);
+            return;
+        }
+
+        const item = this.items.find(item => item.id === itemId);
+        if (item) {
+            item.quantity = newQuantity;
+            this.saveCart();
+        }
+    }
+
     updateCartUI() {
         const cartContainer = document.querySelector('#shoppingCart .offcanvas-body');
 
@@ -97,17 +225,14 @@ class ShoppingCart {
         } else {
             let cartHTML = '<div class="cart-items">';
 
-            // Add cart items
             this.items.forEach(item => {
                 cartHTML += this.renderCartItem(item);
             });
 
-            // Calculate totals
             const subtotal = this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const shipping = 0; // You can modify this based on your shipping logic
+            const shipping = 0;
             const total = subtotal + shipping;
 
-            // Add cart summary
             cartHTML += `
                 <div class="border-top pt-3">
                     <div class="d-flex justify-content-between mb-2">
@@ -130,7 +255,6 @@ class ShoppingCart {
 
             cartContainer.innerHTML = cartHTML;
 
-            // Initialize tooltips
             const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
             tooltips.forEach(tooltip => {
                 new bootstrap.Tooltip(tooltip);
@@ -138,72 +262,69 @@ class ShoppingCart {
         }
     }
 
-    bindEvents() {
-        document.querySelectorAll('.btn-add-to-cart').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const productContainer = e.target.closest('[data-product]');
-                if (productContainer) {
-                    const productData = {
-                        id: productContainer.dataset.productId,
-                        name: productContainer.dataset.productName,
-                        price: parseFloat(productContainer.dataset.productPrice),
-                        originalPrice: productContainer.dataset.productOriginalPrice,
-                        image: productContainer.dataset.productImage
-                    };
-                    this.addItem(productData);
-                }
-            });
-        });
-    }
-
-    updateQuantity(itemId, newQuantity) {
-        if (newQuantity < 1) {
-            this.removeItem(itemId);
-            return;
-        }
-
-        const item = this.items.find(item => item.id === itemId);
-        if (item) {
-            item.quantity = newQuantity;
-            this.saveCart();
-        }
-    }
-
-    showAddedToCartToast() {
-        const toastContainer = document.querySelector('.toast-container') || (() => {
-            const container = document.createElement('div');
-            container.className = 'toast-container position-fixed top-0 end-0 p-3';
-            document.body.appendChild(container);
-            return container;
-        })();
-
-        const toast = document.createElement('div');
-        toast.className = 'toast';
-        toast.innerHTML = `
-            <div class="toast-header">
-                <i class="ci-check-circle text-success me-2"></i>
-                <strong class="me-auto">Success!</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                Item added to your cart successfully!
-            </div>
-        `;
-
-        toastContainer.appendChild(toast);
-        const bsToast = new bootstrap.Toast(toast);
-        bsToast.show();
-
-        toast.addEventListener('hidden.bs.toast', () => {
-            toast.remove();
-        });
-    }
-
     checkout() {
-        // Implement your checkout logic here
         window.location.href = '/checkout/';
     }
 }
 
+// Add CSS for transitions
+const style = document.createElement('style');
+style.textContent = `
+    .btn-add-to-cart {
+        transition: all 0.3s ease;
+    }
+    
+    .btn-add-to-cart.pe-none {
+        opacity: 0.8;
+    }
+    
+    .btn-add-to-cart i {
+        transition: transform 0.3s ease;
+    }
+    
+    .btn-success i {
+        transform: scale(1.2);
+    }
+`;
+document.head.appendChild(style);
+
 // Initialize cart
 const cart = new ShoppingCart();
+
+// Add CSS for the cart badge
+const cart_COUNT_style = document.createElement('style');
+cart_COUNT_style.textContent = `
+    [data-bs-toggle="offcanvas"][data-bs-target="#shoppingCart"] {
+        position: relative;
+    }
+
+    .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background-color: #dc3545;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 500;
+        transform: scale(1);
+        animation: badgePop 0.3s ease-out;
+    }
+    
+    @keyframes badgePop {
+        0% {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+`;
+document.head.appendChild(cart_COUNT_style);
