@@ -1,0 +1,303 @@
+{% load custom_filters %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" data-pwa="true">
+<head>
+    <meta charset="utf-8">
+
+    <!-- Viewport -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+
+    <!-- SEO Meta Tags -->
+    <title>Little Artist</title>
+    <meta name="description" content="Cartzilla - Multipurpose Bootstrap E-Commerce HTML Template">
+    <meta name="keywords"
+          content="online shop, e-commerce, online store, market, multipurpose, product landing, cart, checkout, ui kit, light and dark mode, bootstrap, html5, css3, javascript, gallery, slider, mobile, pwa">
+    <meta name="author" content="Createx Studio">
+
+    <!-- Webmanifest + Favicon / App icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="/static/assets/app-icons/icon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/static/assets/app-icons/icon-180x180.png">
+
+    <!-- Theme switcher (color modes) -->
+    <script src="/static/assets/js/theme-switcher.js"></script>
+
+    <!-- Preloaded local web font (Inter) -->
+    <link rel="preload" href="/static/assets/fonts/inter-variable-latin.woff2" as="font" type="font/woff2"
+          crossorigin="">
+
+    <!-- Font icons -->
+    <link rel="preload" href="/static/assets/icons/cartzilla-icons.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/static/assets/icons/cartzilla-icons.min.css">
+
+    <!-- Vendor styles -->
+    <link rel="stylesheet" href="/static/assets/vendor/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/static/assets/vendor/simplebar/simplebar.min.css">
+    <link rel="stylesheet" href="/static/assets/vendor/glightbox/glightbox.min.css">
+
+    <!-- Bootstrap + Theme styles -->
+    <link rel="preload" href="/static/assets/css/theme.min.css" as="style">
+    <link rel="preload" href="/static/assets/css/theme.rtl.min.css" as="style">
+    <link rel="stylesheet" href="/static/assets/css/theme.min.css" id="theme-styles">
+    {% block css_content %}
+    {% endblock %}
+    <!-- Customizer -->
+    <script src="/static/assets/js/customizer.min.js"></script>
+    <style>
+        .artistic-brand {
+            font-family: 'Bradley Hand', cursive, Arial;
+            font-size: 1.2rem;
+            font-weight: 1000;
+            -webkit-text-stroke: 0.45px #5D4E6D;
+            letter-spacing: 0.5px;
+            color: #5D4E6D;
+            position: relative;
+            padding: 0.25rem 0.5rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-shadow: 0.5px 0.5px 0px rgba(93, 78, 109, 0.3);
+        }
+
+        /* Small screens (mobile) */
+        @media screen and (max-width: 640px) {
+            .artistic-brand {
+                font-size: 1rem;
+                -webkit-text-stroke: 0.35px #5D4E6D;
+                letter-spacing: 0.3px;
+                padding: 0.2rem 0.4rem;
+                text-shadow: 0.3px 0.3px 0px rgba(93, 78, 109, 0.25);
+            }
+        }
+
+        /* Extra small screens */
+        @media screen and (max-width: 380px) {
+            .artistic-brand {
+                font-size: 0.9rem;
+                -webkit-text-stroke: 0.25px #5D4E6D;
+                letter-spacing: 0.2px;
+                padding: 0.15rem 0.3rem;
+                text-shadow: 0.2px 0.2px 0px rgba(93, 78, 109, 0.2);
+            }
+        }
+
+        /* Hover state for interactivity */
+        .artistic-brand:hover {
+            -webkit-text-stroke: 0.6px #5D4E6D;
+            text-shadow: 1px 1px 1px rgba(93, 78, 109, 0.4);
+        }
+
+        .artistic-brand::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .artistic-brand:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Small artistic dots */
+        .artistic-brand::after {
+            content: '✦';
+            font-size: 1rem;
+            color: #FFD700;
+            position: absolute;
+            right: -8px;
+            top: 0;
+        }
+    </style>
+</head>
+
+
+<!-- Body -->
+<body>
+<!-- Shopping cart offcanvas (Empty state) -->
+<div class="offcanvas offcanvas-end pb-sm-2 px-sm-2" id="shoppingCart" tabindex="-1" aria-labelledby="shoppingCartLabel"
+     style="width: 500px">
+    <div class="offcanvas-header py-3 pt-lg-4">
+        <h4 class="offcanvas-title" id="shoppingCartLabel">Shopping cart</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body text-center">
+        <svg class="d-block mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" width="60" viewBox="0 0 29.5 30">
+            <path class="text-body-tertiary"
+                  d="M17.8 4c.4 0 .8-.3.8-.8v-2c0-.4-.3-.8-.8-.8-.4 0-.8.3-.8.8v2c0 .4.3.8.8.8zm3.2.6c.4.2.8 0 1-.4l.4-.9c.2-.4 0-.8-.4-1s-.8 0-1 .4l-.4.9c-.2.4 0 .9.4 1zm-7.5-.4c.2.4.6.6 1 .4s.6-.6.4-1l-.4-.9c-.2-.4-.6-.6-1-.4s-.6.6-.4 1l.4.9z"
+                  fill="currentColor"></path>
+            <path class="text-body-emphasis"
+                  d="M10.7 24.5c-1.5 0-2.8 1.2-2.8 2.8S9.2 30 10.7 30s2.8-1.2 2.8-2.8-1.2-2.7-2.8-2.7zm0 4c-.7 0-1.2-.6-1.2-1.2s.6-1.2 1.2-1.2 1.2.6 1.2 1.2-.5 1.2-1.2 1.2zm11.1-4c-1.5 0-2.8 1.2-2.8 2.8a2.73 2.73 0 0 0 2.8 2.8 2.73 2.73 0 0 0 2.8-2.8c0-1.6-1.3-2.8-2.8-2.8zm0 4c-.7 0-1.2-.6-1.2-1.2s.6-1.2 1.2-1.2 1.2.6 1.2 1.2-.6 1.2-1.2 1.2zM8.7 18h16c.3 0 .6-.2.7-.5l4-10c.2-.5-.2-1-.7-1H9.3c-.4 0-.8.3-.8.8s.4.7.8.7h18.3l-3.4 8.5H9.3L5.5 1C5.4.7 5.1.5 4.8.5h-4c-.5 0-.8.3-.8.7s.3.8.8.8h3.4l3.7 14.6a3.24 3.24 0 0 0-2.3 3.1C5.5 21.5 7 23 8.7 23h16c.4 0 .8-.3.8-.8s-.3-.8-.8-.8h-16a1.79 1.79 0 0 1-1.8-1.8c0-1 .9-1.6 1.8-1.6z"
+                  fill="currentColor"></path>
+        </svg>
+        <h6 class="mb-2">Your shopping cart is currently empty!</h6>
+        <p class="fs-sm mb-4">Explore our wide range of products and add items to your cart to proceed with your
+            purchase.</p>
+        <a class="btn btn-dark rounded-pill" href="#">Continue shopping</a>
+    </div>
+</div>
+
+<header class="navbar-sticky sticky-top container z-fixed px-2" data-sticky-element="" style="margin-top: 20px">
+    <div class="navbar navbar-expand-lg flex-nowrap bg-body rounded-pill shadow ps-0 mx-1">
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark rounded-pill z-0 d-none d-block-dark"></div>
+
+        <!-- Mobile offcanvas menu toggler (Hamburger) -->
+        <button type="button" class="navbar-toggler ms-3" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar brand (Logo) -->
+        <a class="navbar-brand position-relative z-1 ms-4 ms-sm-5 ms-lg-4 me-2 me-sm-0 me-lg-3" href="">
+            <div class="artistic-brand">
+                {% if page == 'detail' %}
+                    <img style="width: 160px" src="/static/assets/little_artist.svg">
+                {% else %}
+                    Where Little Hands Create Big Dreams
+                {% endif %}
+            </div>
+        </a>
+
+        <!-- Main navigation that turns into offcanvas on screens < 992px wide (lg breakpoint) -->
+        <nav class="offcanvas offcanvas-start" id="navbarNav" tabindex="-1" aria-labelledby="navbarNavLabel">
+
+        </nav>
+
+        <!-- Button group -->
+        <div class="d-flex gap-sm-1 position-relative z-1">
+            <!-- Cart button -->
+            <button type="button"
+                    class="btn btn-icon fs-lg btn-outline-secondary border-0 rounded-circle animate-scale me-2"
+                    data-bs-toggle="offcanvas" data-bs-target="#shoppingCart" aria-controls="shoppingCart"
+                    aria-label="Shopping cart">
+                <i class="ci-shopping-cart animate-target"></i>
+            </button>
+
+            <!-- Search -->
+            <div class="dropdown">
+                <button type="button" class="btn btn-icon fs-lg btn-secondary rounded-circle animate-scale"
+                        data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-label="Toggle search bar">
+                    <i class="ci-search animate-target"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end p-3"
+                     style="--cz-dropdown-min-width: 20rem; --cz-dropdown-spacer: 1rem">
+                    <form class="position-relative">
+                        <input type="search" class="form-control rounded-pill" placeholder="Search..."
+                               data-autofocus="dropdown">
+                        <button type="submit"
+                                class="btn btn-icon btn-sm fs-lg btn-secondary rounded-circle position-absolute top-0 end-0 mt-1 me-1"
+                                aria-label="Search">
+                            <i class="ci-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Page content -->
+<main class="content-wrapper">
+
+    {% block body_content %}
+    {% endblock %}
+</main>
+
+<!-- Page footer -->
+<footer class="footer bg-dark pb-4 py-lg-5 mt-4 text-center" data-bs-theme="dark">
+    <div class="container pt-5 pt-lg-4 mt-sm-2 mt-md-3 text-center">
+        <div class="row pb-5 justify-content-center">
+            <!-- Custom Art Request + Social Links -->
+            <div class="col-md col-xl-8 text-center">
+                <div class="text-center px-sm-4 mx-auto" style="max-width: 568px">
+                    <h3 class="pb-1 mb-2 text-center">Want Custom Artwork Created?</h3>
+                    <p class="fs-sm text-body pb-2 pb-sm-3 text-center">Share your vision and let's bring it to life!
+                        Drop your email below for a custom art consultation.</p>
+                    <form class="needs-validation position-relative mx-auto" novalidate="">
+                        <input type="email" class="form-control form-control-lg rounded-pill text-center"
+                               placeholder="Enter your email for custom art inquiries" aria-label="Your email address"
+                               required="">
+                        <div class="invalid-tooltip bg-transparent p-0 text-center">Please enter your email to start
+                            your custom art journey!
+                        </div>
+                        <button type="submit"
+                                class="btn btn-icon fs-xl btn-dark rounded-circle position-absolute top-0 end-0 mt-1 me-1"
+                                aria-label="Submit your email address" data-bs-theme="light">
+                            <i class="ci-arrow-up-right"></i>
+                        </button>
+                    </form>
+                    <div class="d-flex justify-content-center gap-2 pt-4 pt-md-5 mt-1 mt-md-0">
+                        <a class="btn btn-icon fs-base btn-outline-secondary border-0" href="#!"
+                           data-bs-toggle="tooltip"
+                           data-bs-template="<div class=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div class=&quot;tooltip-inner bg-transparent text-white p-0&quot;></div></div>"
+                           title="See my art on YouTube" aria-label="Follow my art journey on YouTube">
+                            <i class="ci-youtube"></i>
+                        </a>
+                        <a class="btn btn-icon fs-base btn-outline-secondary border-0" href="#!"
+                           data-bs-toggle="tooltip"
+                           data-bs-template="<div class=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div class=&quot;tooltip-inner bg-transparent text-white p-0&quot;></div></div>"
+                           title="See latest artwork" aria-label="See my latest artwork on Instagram">
+                            <i class="ci-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright -->
+        <p class="fs-xs text-body text-center pt-lg-4 mt-n2 mt-md-0 mb-0">
+            © All rights reserved. Art by <span class="animate-underline"><a
+                class="animate-target text-white text-decoration-none" href="#" target="_blank"
+                rel="noreferrer">Little Artist</a></span>
+        </p>
+    </div>
+</footer>
+
+
+<!-- Back to top button -->
+<div class="floating-buttons position-fixed top-50 end-0 z-sticky me-3 me-xl-4 pb-4">
+    <a class="btn-scroll-top btn btn-sm bg-body border-0 rounded-pill shadow animate-slide-end" href="#top">
+        Top
+        <i class="ci-arrow-right fs-base ms-1 me-n1 animate-target"></i>
+        <span class="position-absolute top-0 start-0 w-100 h-100 border rounded-pill z-0"></span>
+        <svg class="position-absolute top-0 start-0 w-100 h-100 z-1" viewBox="0 0 62 32" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+            <rect x=".75" y=".75" width="60.5" height="30.5" rx="15.25" stroke="currentColor" stroke-width="1.5"
+                  stroke-miterlimit="10"></rect>
+        </svg>
+    </a>
+</div>
+
+
+<!-- Vendor scripts -->
+<script src="/static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/static/assets/vendor/simplebar/simplebar.min.js"></script>
+<script src="/static/assets/vendor/glightbox/glightbox.min.js"></script>
+
+<!-- Bootstrap + Theme scripts -->
+<script src="/static/assets/js/theme.min.js"></script>
+{% block js_script %}
+{% endblock %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const swiper = document.querySelector('#mainSwiper').swiper;
+        const heroSection = document.querySelector('.hero-artistic-bg');
+
+        swiper.on('slideChange', function () {
+            const activeSlide = this.slides[this.activeIndex];
+            const color = activeSlide.dataset.bgColor; // Using the default_color from your listing
+            heroSection.style.setProperty('--pattern-color', color);
+        });
+
+        // Set initial color from first slide
+        const initialColor = swiper.slides[0].dataset.bgColor;
+        heroSection.style.setProperty('--pattern-color', initialColor);
+    });
+</script>
+
+</body>
+</html>

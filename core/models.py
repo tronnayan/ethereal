@@ -55,6 +55,11 @@ class Listing(BaseModel):
     def get_primary_image(self):
         return self.images.filter(is_primary=True).first().image_url
 
+    def get_starting_images(self):
+        return self.images.all().order_by('-pk')[:2]
+
+    def get_all_images(self):
+        return self.images.all().order_by('-pk')[2:]
 
     def __str__(self):
         return self.name
