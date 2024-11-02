@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Gallery</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .art-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 400px;
+            gap: 2rem;
+        }
+
+        .art-item {
+            animation: fadeIn 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .art-item:nth-child(1) { animation-delay: 0.1s; }
+        .art-item:nth-child(2) { animation-delay: 0.2s; }
+        .art-item:nth-child(3) { animation-delay: 0.3s; }
+        .art-item:nth-child(4) { animation-delay: 0.4s; }
+        .art-item:nth-child(5) { animation-delay: 0.5s; }
+        .art-item:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Minimal Navigation -->
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-xl font-semibold text-gray-800">Your Art Studio</a>
+                <div class="flex items-center space-x-6">
+                    <select class="px-4 py-2 border rounded-lg bg-white" id="artFilter">
+                        <option value="all">All Art</option>
+                        <option value="portraits">Portraits</option>
+                        <option value="warli">Warli Art</option>
+                        <option value="thread">Thread Art</option>
+                    </select>
+                    <button class="px-4 py-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition-colors">
+                        Commission Art
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Gallery -->
+    <main class="container mx-auto px-4 pt-24">
+        <!-- Featured Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div class="relative group overflow-hidden rounded-2xl">
+                <img src="/api/placeholder/800/600" alt="Featured Art"
+                     class="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent">
+                    <div class="absolute bottom-0 p-6">
+                        <p class="text-white text-sm mb-2">Featured Work</p>
+                        <h2 class="text-white text-2xl font-bold mb-2">Custom Portrait</h2>
+                        <p class="text-white/80 mb-4">Hand-drawn portrait with intricate details</p>
+                        <div class="flex items-center gap-4">
+                            <span class="text-white text-2xl font-bold">₹2,999</span>
+                            <button class="px-6 py-2 bg-white text-black rounded-lg hover:bg-gray-100 transition-colors">
+                                Purchase Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <img src="/api/placeholder/800/300" alt="Featured Warli"
+                         class="w-full h-[235px] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent">
+                        <div class="absolute bottom-0 p-6">
+                            <h3 class="text-white text-xl font-bold mb-2">Warli Art</h3>
+                            <div class="flex items-center gap-4">
+                                <span class="text-white text-xl font-bold">₹1,999</span>
+                                <button class="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-100 transition-colors">
+                                    Buy Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <img src="/api/placeholder/800/300" alt="Featured Thread Art"
+                         class="w-full h-[235px] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent">
+                        <div class="absolute bottom-0 p-6">
+                            <h3 class="text-white text-xl font-bold mb-2">Thread Art</h3>
+                            <div class="flex items-center gap-4">
+                                <span class="text-white text-xl font-bold">₹2,499</span>
+                                <button class="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-100 transition-colors">
+                                    Buy Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="art-grid pb-20">
+            <!-- Art Item 1 -->
+            <div class="art-item group relative overflow-hidden rounded-xl shadow-lg">
+                <img src="/api/placeholder/400/500" alt="Art 1"
+                     class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="absolute bottom-0 p-6">
+                        <h3 class="text-white text-lg font-bold mb-1">Custom Portrait</h3>
+                        <p class="text-white/80 text-sm mb-3">Hand-drawn artwork</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-white text-xl font-bold">₹1,999</span>
+                            <button class="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-100 transition-colors">
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Repeat similar art items with different images and details -->
+            <!-- Art Items 2-6 with the same structure but different content -->
+            <!-- Copy and modify the Art Item 1 structure 5 more times -->
+        </div>
+
+        <!-- Quick Contact Float Button -->
+        <button class="fixed bottom-6 right-6 bg-rose-500 text-white p-4 rounded-full shadow-lg hover:bg-rose-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-4l-4 4z" />
+            </svg>
+        </button>
+    </main>
+</body>
+</html>
