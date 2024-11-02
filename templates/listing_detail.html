@@ -93,7 +93,16 @@
 
                     <!-- Add to cart + Wishlist buttons -->
                     <div class="d-flex gap-3 pb-4 mb-2 mb-lg-3">
-                        <button type="button" class="btn btn-lg btn-dark w-100 rounded-pill">Add to cart</button>
+                        <div data-product
+                             data-product-id="{{ listing.uuid }}"
+                             data-product-name="{{ listing.name }}"
+                             data-product-price="{{ listing.price }}"
+                             data-product-image="{{ listing.get_primary_image }}">
+                            <!-- Your existing product content -->
+                            <button type="button" class="btn btn-lg btn-dark w-100 rounded-pill btn-add-to-cart">
+                                Add to cart
+                            </button>
+                        </div>
                         <button type="button" class="btn btn-icon btn-lg btn-secondary rounded-circle animate-pulse"
                                 aria-label="Add to Wishlist">
                             <i class="ci-heart fs-lg animate-target"></i>
@@ -227,7 +236,16 @@
                                     </h3>
                                     <div class="h6">₹{{ listing.price }}</div>
                                     <div class="d-flex gap-2">
-                                        <button type="button" class="btn btn-dark w-100 rounded-pill px-3">Add to cart
+                                        <div data-product
+                             data-product-id="{{ listing.uuid }}"
+                             data-product-name="{{ listing.name }}"
+                             data-product-price="{{ listing.price }}"
+                             data-product-image="{{ listing.get_primary_image }}">
+                            <!-- Your existing product content -->
+                            <button type="button" class="btn btn-lg btn-dark w-100 rounded-pill btn-add-to-cart">
+                                Add to cart
+                            </button>
+                        </div>
                                         </button>
                                         <button type="button"
                                                 class="btn btn-icon btn-secondary rounded-circle animate-pulse"
@@ -258,4 +276,8 @@
             </div>
         </section>
     </div>
+{% endblock %}
+
+{% block js_script %}
+    <script src="/static/assets/js/shopping_cart.js"></script>
 {% endblock %}
