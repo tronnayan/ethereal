@@ -49,6 +49,12 @@
         .swiper#captions .fade-content {
             transition: opacity 0.3s ease;
         }
+
+        /* Make sure content stays above the pattern */
+        .hero-artistic-bg > * {
+            position: relative;
+            z-index: 2;
+        }
     </style>
 {% endblock %}
 {% block body_content %}
