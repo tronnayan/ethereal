@@ -329,17 +329,20 @@
                                         <span class="animate-target">{{ listing.name }}</span>
                                     </a>
                                 </h3>
-                                <div class="h6">₹{{ listing.price }}</div>
-                                <div class="d-flex gap-2">
-                                    <button type="button" class="btn btn-dark w-100 rounded-pill px-3">Add to cart
-                                    </button>
-                                    <button type="button"
-                                            class="btn btn-icon btn-secondary rounded-circle animate-pulse"
-                                            aria-label="Add to wishlist">
-                                        <i class="ci-heart fs-base animate-target"></i>
-                                    </button>
+                                <div class="d-flex align-items-center justify-content-between gap-3">
+                                    <div class="h6 mb-0">₹{{ listing.price }}</div>
+                                    <div data-product
+                                         data-product-id="{{ listing.uuid }}"
+                                         data-product-name="{{ listing.name }}"
+                                         data-product-price="{{ listing.price }}"
+                                         data-product-image="{{ listing.get_primary_image }}">
+                                        <button type="button" class="btn btn-dark rounded-pill px-3 btn-add-to-cart">
+                                            Add to cart
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
                     {% endfor %}
                 </div>
