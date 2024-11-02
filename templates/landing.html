@@ -50,6 +50,7 @@
             transition: opacity 0.3s ease;
         }
 
+
         /* Make sure content stays above the pattern */
         .hero-artistic-bg > * {
             position: relative;
@@ -58,7 +59,7 @@
     </style>
 {% endblock %}
 {% block body_content %}
-        <!-- Hero slider -->
+    <!-- Hero slider -->
     <section class="hero-artistic-bg bg-body-tertiary min-vh-100 d-flex align-items-center overflow-hidden"
              style="margin-top: -110px; padding-top: 110px">
         <div class="container h-100 py-5 my-md-2 my-lg-3 my-xl-4 mb-xxl-5">
@@ -205,17 +206,21 @@
             </div>
 
             <!-- Linked captions (controlled slider) -->
-            <div style="background: transparent" class="swiper swiper-fade" id="captions" data-swiper='{
-      "allowTouchMove": false,
-      "loop": true,
-      "effect": "fade"
-    }'>
+            <div style="background: transparent" class="swiper" id="captions" data-swiper='{
+    "allowTouchMove": false,
+    "loop": true,
+    "effect": "fade",
+    "fadeEffect": {
+        "crossFade": true
+    },
+    "speed": 600
+}'>
                 <div class="swiper-wrapper">
                     {% for listing in listings %}
-                        <div class="swiper-slide  text-center">
+                        <div class="swiper-slide swiper-slide-custom  text-center">
                             <h3 class="text-secondary-emphasis fs-base fw-normal mb-2">{{ listing.name }}</h3>
                             <p class="h4 mb-4">₹{{ listing.price }}</p>
-                            <a class="btn btn-lg btn-dark rounded-pill" href="/listing/{{listing.id}}/">
+                            <a class="btn btn-lg btn-dark rounded-pill" href="/listing/{{ listing.id }}/">
                                 Shop now
                                 <i class="ci-chevron-right fs-lg ms-2 me-n2"></i>
                             </a>
@@ -240,7 +245,7 @@
                         <div class="category-card w-100 text-center px-1 px-lg-2 px-xxl-3 mx-auto"
                              style="min-width: 165px">
                             <div class="category-card-body">
-                                <a class="d-block text-decoration-none" href="#">
+                                <a class="d-block text-decoration-none" href="/category/{{ category.id }}">
                                     <div class="bg-body-tertiary rounded-pill mb-3 mx-auto" style="max-width: 164px">
                                         <div class="ratio ratio-1x1">
                                             <img src="{{ category.logo }}"
@@ -311,7 +316,7 @@
                         <div class="swiper-slide">
                             <div class="animate-underline">
                                 <a class="hover-effect-opacity ratio ratio-1x1 d-block mb-3"
-                                   href="/listing/{{listing.id}}/">
+                                   href="/listing/{{ listing.id }}/">
                                     <img src="{{ listing.get_primary_image }}"
                                          class="hover-effect-target opacity-100"
                                          alt="Primary Image">
@@ -320,7 +325,7 @@
                                          alt="Item Image">
                                 </a>
                                 <h3 class="mb-2">
-                                    <a class="d-block fs-sm fw-medium text-truncate" href="/listing/{{listing.id}}/">
+                                    <a class="d-block fs-sm fw-medium text-truncate" href="/listing/{{ listing.id }}/">
                                         <span class="animate-target">{{ listing.name }}</span>
                                     </a>
                                 </h3>

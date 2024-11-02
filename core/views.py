@@ -26,3 +26,9 @@ class CoreViewSet(ViewSet):
         related_products = Listing.objects.all().order_by('-pk')
         return render(request, 'listing_detail.html',
                       {"listing": listing, "page": "detail", "related_products": related_products})
+
+    def get_category_detail_page(self, request, category_id: int):
+        category = ListingCategory.objects.get(pk=category_id)
+        all_products = category.items.all().order_by('-pk')
+        return render(request, 'category_page.html',
+                      {"category": category, "page": "detail", "all_products": all_products})

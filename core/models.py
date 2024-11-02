@@ -53,7 +53,10 @@ class Listing(BaseModel):
     default_color = models.CharField(default=None, null=True, max_length=100)
 
     def get_primary_image(self):
-        return self.images.filter(is_primary=True).first().image_url
+        primary_image = self.images.filter(is_primary=True).first()
+        if not primary_image:
+            return self.images.first().image_url if self.images.first() else ''
+        return primary_image.image_url
 
     def get_starting_images(self):
         return self.images.all().order_by('-pk')[:2]
