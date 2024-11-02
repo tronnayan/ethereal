@@ -98,9 +98,7 @@
         .artistic-brand {
             font-family: 'Bradley Hand', cursive, Arial;
             font-size: 1.2rem;
-            /* Increased font weight */
             font-weight: 1000;
-            /* Added text stroke for extra boldness */
             -webkit-text-stroke: 0.45px #5D4E6D;
             letter-spacing: 0.5px;
             color: #5D4E6D;
@@ -108,8 +106,29 @@
             padding: 0.25rem 0.5rem;
             transition: all 0.3s ease;
             display: inline-block;
-            /* Optional: added text shadow for more emphasis */
             text-shadow: 0.5px 0.5px 0px rgba(93, 78, 109, 0.3);
+        }
+
+        /* Small screens (mobile) */
+        @media screen and (max-width: 640px) {
+            .artistic-brand {
+                font-size: 1rem;
+                -webkit-text-stroke: 0.35px #5D4E6D;
+                letter-spacing: 0.3px;
+                padding: 0.2rem 0.4rem;
+                text-shadow: 0.3px 0.3px 0px rgba(93, 78, 109, 0.25);
+            }
+        }
+
+        /* Extra small screens */
+        @media screen and (max-width: 380px) {
+            .artistic-brand {
+                font-size: 0.9rem;
+                -webkit-text-stroke: 0.25px #5D4E6D;
+                letter-spacing: 0.2px;
+                padding: 0.15rem 0.3rem;
+                text-shadow: 0.2px 0.2px 0px rgba(93, 78, 109, 0.2);
+            }
         }
 
         /* Hover state for interactivity */
@@ -396,7 +415,7 @@
     }'>
                 <div class="swiper-wrapper">
                     {% for listing in listings %}
-                        <div class="swiper-slide  text-center" style="background: transparent">
+                        <div class="swiper-slide  text-center">
                             <h3 class="text-secondary-emphasis fs-base fw-normal mb-2">{{ listing.name }}</h3>
                             <p class="h4 mb-4">₹{{ listing.price }}</p>
                             <a class="btn btn-lg btn-dark rounded-pill" href="">
