@@ -1,0 +1,50 @@
+<svg viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Enhanced paint splatter background -->
+  <path d="M40,40 Q60,15 80,40 T120,40" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.4">
+    <animate attributeName="d" dur="8s" repeatCount="indefinite"
+      values="M40,40 Q60,15 80,40 T120,40;
+              M40,40 Q60,25 80,40 T120,40;
+              M40,40 Q60,15 80,40 T120,40"/>
+  </path>
+
+  <!-- Watercolor-like circles -->
+  <circle cx="50" cy="30" r="18" fill="#FF69B4" opacity="0.08">
+    <animate attributeName="r" values="18;20;18" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="45" cy="35" r="15" fill="#FFD700" opacity="0.07"/>
+  <circle cx="250" cy="50" r="22" fill="#4CAF50" opacity="0.08">
+    <animate attributeName="r" values="22;24;22" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="255" cy="45" r="18" fill="#FF69B4" opacity="0.06"/>
+
+  <!-- Additional artistic elements -->
+  <path d="M160,15 Q165,10 170,15" stroke="#FFD700" fill="none" stroke-width="1" opacity="0.4"/>
+  <path d="M140,70 Q145,65 150,70" stroke="#4CAF50" fill="none" stroke-width="1" opacity="0.4"/>
+
+  <!-- Main text path -->
+  <path id="textPath" d="M30,40 Q150,35 270,40" fill="none"/>
+
+  <!-- Artistic text -->
+  <text font-family="Bradley Hand, cursive" font-size="32">
+    <textPath href="#textPath" startOffset="50%" text-anchor="middle">
+      Little Artist <tspan font-size="24">🌷</tspan>
+    </textPath>
+  </text>
+
+  <!-- Enhanced decorative elements -->
+  <path d="M20,60 Q25,55 30,60" stroke="#FF69B4" fill="none" stroke-width="2" opacity="0.6"/>
+  <path d="M270,60 Q275,55 280,60" stroke="#FF69B4" fill="none" stroke-width="2" opacity="0.6"/>
+
+  <!-- Enhanced paint brush strokes -->
+  <path d="M15,65 Q20,60 25,65" stroke="#4CAF50" fill="none" stroke-width="1.5" opacity="0.7"/>
+  <path d="M275,65 Q280,60 285,65" stroke="#4CAF50" fill="none" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- Improved stars -->
+  <path d="M40,20 l2.5,2.5 l-2.5,2.5 l-2.5,-2.5 z" fill="#FFD700" opacity="0.8"/>
+  <path d="M260,20 l2.5,2.5 l-2.5,2.5 l-2.5,-2.5 z" fill="#FFD700" opacity="0.8"/>
+
+  <!-- Additional small decorative dots -->
+  <circle cx="130" cy="25" r="1" fill="#FF69B4" opacity="0.6"/>
+  <circle cx="180" cy="60" r="1" fill="#4CAF50" opacity="0.6"/>
+  <circle cx="220" cy="20" r="1" fill="#FFD700" opacity="0.6"/>
+</svg>

@@ -9,7 +9,7 @@
           content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
 
     <!-- SEO Meta Tags -->
-    <title>Ayuree Arts</title>
+    <title>Little Artist</title>
     <meta name="description" content="Cartzilla - Multipurpose Bootstrap E-Commerce HTML Template">
     <meta name="keywords"
           content="online shop, e-commerce, online store, market, multipurpose, product landing, cart, checkout, ui kit, light and dark mode, bootstrap, html5, css3, javascript, gallery, slider, mobile, pwa">
@@ -49,7 +49,7 @@
         .hero-artistic-bg {
             position: relative;
             overflow: hidden;
-            background-color: #fff;
+            background-image: url('static/assets/artistic-hero-bg.svg');
         }
 
         .hero-artistic-bg::before {
@@ -59,7 +59,6 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(120deg, var(--pattern-color, #4169E1) 0%, transparent 100%);
             opacity: 0.15; /* Increased from 0.1 */
             transition: all 0.5s ease;
         }
@@ -71,44 +70,93 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 20% 30%, var(--pattern-color, #4169E1) 0%, transparent 100%),
-            radial-gradient(circle at 80% 70%, var(--pattern-color, #4169E1) 0%, transparent 100%);
             opacity: 0.12; /* Increased from 0.08 */
             transition: all 0.5s ease;
             mix-blend-mode: multiply;
             z-index: 0;
         }
 
-        .artistic-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='currentColor' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
-            background-size: 80px 80px;
-            opacity: 0.3; /* Increased from 0.03 */
-            mix-blend-mode: multiply;
-            z-index: 0;
-            transition: opacity 0.5s ease;
-        }
-
         .swiper-slide-custom img {
             position: relative;
             z-index: 1;
         }
+
         .swiper#captions .swiper-slide-custom {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
 
-.swiper#captions .swiper-slide-active {
-    opacity: 1;
-}
+        .swiper#captions .swiper-slide-active {
+            opacity: 1;
+        }
 
-.swiper#captions .fade-content {
-    transition: opacity 0.3s ease;
-}
+        .swiper#captions .fade-content {
+            transition: opacity 0.3s ease;
+        }
+    </style>
+    <style>
+        .artistic-brand {
+            font-family: 'Bradley Hand', cursive, Arial;
+            font-size: 1.2rem;
+            /* Increased font weight */
+            font-weight: 1000;
+            /* Added text stroke for extra boldness */
+            -webkit-text-stroke: 0.45px #5D4E6D;
+            letter-spacing: 0.5px;
+            color: #5D4E6D;
+            position: relative;
+            padding: 0.25rem 0.5rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            /* Optional: added text shadow for more emphasis */
+            text-shadow: 0.5px 0.5px 0px rgba(93, 78, 109, 0.3);
+        }
+
+        /* Hover state for interactivity */
+        .artistic-brand:hover {
+            -webkit-text-stroke: 0.6px #5D4E6D;
+            text-shadow: 1px 1px 1px rgba(93, 78, 109, 0.4);
+        }
+
+        .artistic-brand::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .artistic-brand:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Small artistic dots */
+        .artistic-brand::after {
+            content: '✦';
+            font-size: 1rem;
+            color: #FFD700;
+            position: absolute;
+            right: -8px;
+            top: 0;
+        }
+    </style>
+    <style>
+        .hero-artistic-bg {
+            position: relative;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+
+        /* Make sure content stays above the pattern */
+        .hero-artistic-bg > * {
+            position: relative;
+            z-index: 2;
+        }
     </style>
 </head>
 
@@ -138,129 +186,106 @@
     </div>
 </div>
 
-<header class="navbar navbar-expand navbar-sticky d-block bg-body z-fixed py-1 py-lg-0 py-xl-1 px-0"
-        data-sticky-element="">
-    <div class="container justify-content-start py-2 py-lg-3">
+<header class="navbar-sticky sticky-top container z-fixed px-2" data-sticky-element="" style="margin-top: 20px">
+    <div class="navbar navbar-expand-lg flex-nowrap bg-body rounded-pill shadow ps-0 mx-1">
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark rounded-pill z-0 d-none d-block-dark"></div>
 
+        <!-- Mobile offcanvas menu toggler (Hamburger) -->
+        <button type="button" class="navbar-toggler ms-3" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
         <!-- Navbar brand (Logo) -->
-        <a class="navbar-brand position-relative z-1 ms-4 ms-sm-5 ms-lg-4 me-2 me-sm-0 me-lg-3" href="#">
-            <span style="
-    font-family: 'Dancing Script', cursive;
-    font-size: 1em;
-    font-weight: 900;
-    color: #4169E1;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    background: linear-gradient(45deg, #000000, #000000);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-">Little Artist </span><span style="margin-left: 4px">🌷</span>
+        <a class="navbar-brand position-relative z-1 ms-4 ms-sm-5 ms-lg-4 me-2 me-sm-0 me-lg-3" href="">
+            <div class="artistic-brand">
+                Where Little Hands Create Big Dreams
+            </div>
         </a>
 
-        <!-- Button group -->
-        <div class="d-flex align-items-center gap-md-1 gap-lg-2 ms-auto">
-            <a class="btn btn-icon fs-lg btn-outline-secondary border-0 rounded-circle animate-shake d-none d-md-inline-flex"
-               href="account-signin.html">
-                <i class="ci-user animate-target"></i>
-                <span class="visually-hidden">Account</span>
-            </a>
-            <!-- Cart button -->
+        <!-- Main navigation that turns into offcanvas on screens < 992px wide (lg breakpoint) -->
+        <nav class="offcanvas offcanvas-start" id="navbarNav" tabindex="-1" aria-labelledby="navbarNavLabel">
 
+        </nav>
+
+        <!-- Button group -->
+        <div class="d-flex gap-sm-1 position-relative z-1">
+            <!-- Cart button -->
             <button type="button"
-                    class="btn btn-icon fs-xl btn-outline-secondary position-relative border-0 rounded-circle animate-scale"
+                    class="btn btn-icon fs-lg btn-outline-secondary border-0 rounded-circle animate-scale me-2"
                     data-bs-toggle="offcanvas" data-bs-target="#shoppingCart" aria-controls="shoppingCart"
                     aria-label="Shopping cart">
-                <span class="position-absolute top-0 start-100 badge fs-xs text-bg-primary rounded-pill ms-n3 z-2"
-                      style="--cz-badge-padding-y: .25em; --cz-badge-padding-x: .42em">8</span>
                 <i class="ci-shopping-cart animate-target"></i>
             </button>
-        </div>
-    </div>
 
-    <!-- Search collapse available on screens < 768px wide (md breakpoint) -->
-    <div class="collapse d-md-none" id="searchBar">
-        <div class="container pt-2 pb-3">
-            <div class="position-relative">
-                <i class="ci-search position-absolute top-50 translate-middle-y d-flex fs-lg ms-3"></i>
-                <input type="search" class="form-control form-icon-start rounded-pill" placeholder="Search for products"
-                       data-autofocus="collapse">
+            <!-- Search -->
+            <div class="dropdown">
+                <button type="button" class="btn btn-icon fs-lg btn-secondary rounded-circle animate-scale"
+                        data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-label="Toggle search bar">
+                    <i class="ci-search animate-target"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end p-3"
+                     style="--cz-dropdown-min-width: 20rem; --cz-dropdown-spacer: 1rem">
+                    <form class="position-relative">
+                        <input type="search" class="form-control rounded-pill" placeholder="Search..."
+                               data-autofocus="dropdown">
+                        <button type="submit"
+                                class="btn btn-icon btn-sm fs-lg btn-secondary rounded-circle position-absolute top-0 end-0 mt-1 me-1"
+                                aria-label="Search">
+                            <i class="ci-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </header>
 <!-- Page content -->
 <main class="content-wrapper">
-    {#                                >#}
-    {#                            </div>#}
-    {#                        </div>#}
-    {#                    </div>#}
-    {#                {% endfor %}#}
-    {#                <!-- Slide -->#}
-    {#                <!-- Slide -->#}
-    {#                <!-- Slide -->#}
-    {#            </div>#}
-    {##}
-    {#            <!-- Slider pagination (Bullets) -->#}
-    {#            <div class="swiper-pagination pb-sm-2 swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">#}
-    {#                <span class="swiper-pagination-bullet" tabindex="0" role="button"#}
-    {#                      aria-label="Go to slide 1"></span><span#}
-    {#                    class="swiper-pagination-bullet" tabindex="0" role="button"#}
-    {#                    aria-label="Go to slide 2"></span><span#}
-    {#                    class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"#}
-    {#                    aria-label="Go to slide 3" aria-current="true"></span></div>#}
-    {#            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>#}
-    {#        <div class="d-md-none" style="height: 380px"></div>#}
-    {#        <div class="d-none d-md-block d-lg-none" style="height: 420px"></div>#}
-    {#        <div class="d-none d-lg-block d-xl-none" style="height: 500px"></div>#}
-    {#        <div class="d-none d-xl-block d-xxl-none" style="height: 560px"></div>#}
-    {#        <div class="d-none d-xxl-block" style="height: 624px"></div>#}
-    {#    </section>#}
     <!-- Hero slider -->
-    <section class="hero-artistic-bg min-vh-100 d-flex align-items-center overflow-hidden"
-             style="margin-top: -110px; padding-top: 80px;">
-        <div class="artistic-pattern"></div>
+    <section class="hero-artistic-bg bg-body-tertiary min-vh-100 d-flex align-items-center overflow-hidden"
+             style="margin-top: -110px; padding-top: 110px">
         <div class="container h-100 py-5 my-md-2 my-lg-3 my-xl-4 mb-xxl-5">
-            <div class="flex flex-col items-center justify-center gap-4 p-4 text-center">
-                <img src="/static/assets/img/logo.png" alt="Logo" class="object-contain text-center"
-                     style="width: 60px"/>
-                <h1 class="display-4 text-center mx-auto mb-4 ">Featured Items</h1>
-            </div>
+            <h1 class="display-4 text-center mx-auto mb-4" style="max-width: 680px">
+
+                <img src="static/assets/little_artist.svg">
+                {#                Where Little Hands Create Big#}
+                {#                Dreams#}
+            </h1>
             <div class="row align-items-center justify-content-center gx-3 gx-sm-4 mb-3 mb-sm-4">
-                <!-- Prev slide preview -->
+
+                <!-- Prev slide preview (controlled slider) -->
                 <div class="col-lg-1 col-xl-2 d-none d-lg-flex justify-content-end">
                     <div class="position-relative user-select-none" style="width: 262px">
                         <span class="position-absolute top-0 start-0 w-100 h-100 bg-white opacity-50 rounded-circle d-none-dark"></span>
                         <span class="position-absolute top-0 start-0 w-100 h-100 bg-white rounded-circle d-none-dark d-none d-block-dark"
                               style="opacity: .05"></span>
-                        <div class="swiper position-relative z-2 opacity-60 rounded-circle pe-none" id="thumbsPrev"
-                             data-swiper='{
-                                        "allowTouchMove": false,
-                                        "loop": true,
-                                        "effect": "coverflow",
-                                        "coverflowEffect": {
-                                            "rotate": 0,
-                                            "scale": 1.3,
-                                            "depth": -200,
-                                            "stretch": -100,
-                                            "slideShadows": false
-                                        }
-                                    }'>
+                        <div class="swiper position-relative z-2 opacity-60 rounded-circle pe-none swiper-coverflow swiper-3d"
+                             id="thumbsPrev" data-swiper='{
+            "allowTouchMove": false,
+            "loop": true,
+            "effect": "coverflow",
+            "coverflowEffect": {
+              "rotate": 0,
+              "scale": 1.3,
+              "depth": -200,
+              "stretch": -100,
+              "slideShadows": false
+            }
+          }'>
                             <div class="swiper-wrapper">
                                 {% for listing in listings %}
-                                    <div class="swiper-slide swiper-slide-custom"
-                                         style="display: flex; justify-content: center; align-items: center;">
+                                    <div class="swiper-slide" role="group"
+                                         aria-label="{{ forloop.counter }} / {{ listings|length }}">
                                         <div style="height: 250px; width: 250px; padding: 20px; box-sizing: border-box; display: flex; justify-content: center; align-items: center;">
                                             {% if forloop.counter0 == 0 %}
                                                 {% with last_listing=listings.last %}
-                                                    <img src="{{ last_listing.get_primary_image }}"
-                                                         style="width: 100%; height: 100%; object-fit: cover;">
+                                                    <img src="{{ last_listing.get_primary_image }}" alt="Thumbnail">
                                                 {% endwith %}
                                             {% else %}
                                                 {% for prev_listing in listings %}
                                                     {% if forloop.counter0 == forloop.parentloop.counter0|add:-1 %}
-                                                        <img src="{{ prev_listing.get_primary_image }}"
-                                                             style="width: 100%; height: 100%; object-fit: cover;">
+                                                        <img src="{{ prev_listing.get_primary_image }}" alt="Thumbnail">
                                                     {% endif %}
                                                 {% endfor %}
                                             {% endif %}
@@ -272,38 +297,40 @@
                     </div>
                 </div>
 
+                <!-- Prev button -->
+                <div class="col-auto col-sm-1 order-1 order-lg-2 d-flex align-items-center justify-content-center">
+                    <button type="button"
+                            class="btn-prev btn btn-lg btn-icon btn-outline-secondary rounded-circle animate-slide-start">
+                        <i class="ci-chevron-left fs-xl animate-target"></i>
+                    </button>
+                </div>
+
                 <!-- Main slider -->
                 <div class="col-sm-10 col-lg-8 col-xl-6 order-3">
-                    <div class="swiper user-select-none "
-                         id="mainSwiper"
-                         style="padding: 20px; border-radius: 16px;"
-                         data-swiper='{
-            "loop": true,
-            "grabCursor": true,
-            "speed": 600,
-            "controlSlider": ["#thumbsPrev", "#thumbsNext", "#captions"],
-            "effect": "coverflow",
-            "coverflowEffect": {
-                "rotate": 0,
-                "scale": 1.3,
-                "depth": -200,
-                "stretch": -100,
-                "slideShadows": false
-            },
-            "navigation": {
-                "prevEl": ".btn-prev",
-                "nextEl": ".btn-next"
-            }
+                    <div class="swiper user-select-none rounded-pill swiper-coverflow swiper-3d" data-swiper='{
+          "loop": true,
+          "grabCursor": true,
+          "speed": 600,
+          "controlSlider": ["#thumbsPrev", "#thumbsNext", "#captions"],
+          "effect": "coverflow",
+          "coverflowEffect": {
+            "rotate": 0,
+            "scale": 1.3,
+            "depth": -200,
+            "stretch": -100,
+            "slideShadows": false
+          },
+          "navigation": {
+            "prevEl": ".btn-prev",
+            "nextEl": ".btn-next"
+          }
         }'>
                         <div class="swiper-wrapper">
                             {% for listing in listings %}
-                                <div class="swiper-slide"
-                                     data-bg-color="{{ listing.default_color }}"
-                                     data-swiper-binded="#description{{ forloop.counter }}">
-                                    <div style="height: 400px; width: 400px; margin: 0 auto; padding: 10px; box-sizing: border-box; border-radius: 8px;">
-                                        <img src="{{ listing.get_primary_image }}"
-                                             alt="{{ listing.name }}"
-                                             style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+                                <div class="swiper-slide" data-swiper-binded="#description{{ forloop.counter }}">
+                                    <div class="ratio"
+                                         style="height: 400px; width: 400px; margin: 0 auto; padding: 10px; box-sizing: border-box; border-radius: 8px;">
+                                        <img src="{{ listing.get_primary_image }}" alt="{{ listing.name }}">
                                     </div>
                                 </div>
                             {% endfor %}
@@ -311,38 +338,44 @@
                     </div>
                 </div>
 
-                <!-- Next slide preview -->
+                <!-- Next button -->
+                <div class="col-auto col-sm-1 order-2 order-sm-3 order-lg-4 d-flex align-items-center justify-content-center">
+                    <button type="button"
+                            class="btn-next btn btn-lg btn-icon btn-outline-secondary rounded-circle animate-slide-end">
+                        <i class="ci-chevron-right fs-xl animate-target"></i>
+                    </button>
+                </div>
+
+                <!-- Next slide preview (controlled slider) -->
                 <div class="col-lg-1 col-xl-2 order-lg-5 d-none d-lg-block">
                     <div class="position-relative user-select-none" style="width: 262px">
                         <span class="position-absolute top-0 start-0 w-100 h-100 bg-white opacity-50 rounded-circle d-none-dark"></span>
                         <span class="position-absolute top-0 start-0 w-100 h-100 bg-white rounded-circle d-none-dark d-none d-block-dark"
                               style="opacity: .05"></span>
-                        <div class="swiper position-relative z-2 opacity-60 rounded-circle pe-none" id="thumbsNext"
-                             data-swiper='{
-                                            "allowTouchMove": false,
-                                            "loop": true,
-                                            "effect": "coverflow",
-                                            "coverflowEffect": {
-                                                "rotate": 0,
-                                                "scale": 1.3,
-                                                "depth": -200,
-                                                "stretch": -100,
-                                                "slideShadows": false
-                                            }
-                                        }'>
+                        <div class="swiper position-relative z-2 opacity-60 rounded-circle pe-none swiper-coverflow swiper-3d"
+                             id="thumbsNext" data-swiper='{
+            "allowTouchMove": false,
+            "loop": true,
+            "effect": "coverflow",
+            "coverflowEffect": {
+              "rotate": 0,
+              "scale": 1.3,
+              "depth": -200,
+              "stretch": -100,
+              "slideShadows": false
+            }
+          }'>
                             <div class="swiper-wrapper">
                                 {% for listing in listings %}
-                                    <div class="swiper-slide"
-                                         style="display: flex; justify-content: center; align-items: center;">
+                                    <div class="swiper-slide" role="group"
+                                         aria-label="{{ forloop.counter }} / {{ listings|length }}">
                                         <div style="height: 250px; width: 250px; padding: 20px; box-sizing: border-box; display: flex; justify-content: center; align-items: center;">
                                             {% if forloop.last %}
-                                                <img src="{{ listings.0.get_primary_image }}"
-                                                     style="width: 100%; height: 100%; object-fit: cover;">
+                                                <img src="{{ listings.0.get_primary_image }}" alt="Thumbnail">
                                             {% else %}
                                                 {% for next_listing in listings %}
                                                     {% if forloop.counter0 == forloop.parentloop.counter0|add:1 %}
-                                                        <img src="{{ next_listing.get_primary_image }}"
-                                                             style="width: 100%; height: 100%; object-fit: cover;">
+                                                        <img src="{{ next_listing.get_primary_image }}" alt="Thumbnail">
                                                     {% endif %}
                                                 {% endfor %}
                                             {% endif %}
@@ -353,32 +386,17 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Navigation buttons -->
-                <div class="col-auto col-sm-1 order-1 order-lg-2">
-                    <button type="button" class="btn-prev btn btn-lg btn-icon btn-outline-secondary rounded-circle">
-                        <i class="ci-chevron-left"></i>
-                    </button>
-                </div>
-                <div class="col-auto col-sm-1 order-2 order-sm-3 order-lg-4">
-                    <button type="button" class="btn-next btn btn-lg btn-icon btn-outline-secondary rounded-circle">
-                        <i class="ci-chevron-right"></i>
-                    </button>
-                </div>
             </div>
-            <!-- Captions -->
-            <div class="swiper" id="captions" data-swiper='{
-                    "allowTouchMove": false,
-                    "loop": true,
-                    "effect": "fade",
-                    "fadeEffect": {
-                        "crossFade": true
-                    },
-                    "speed": 300
-                }'>
+
+            <!-- Linked captions (controlled slider) -->
+            <div style="background: transparent" class="swiper swiper-fade" id="captions" data-swiper='{
+      "allowTouchMove": false,
+      "loop": true,
+      "effect": "fade"
+    }'>
                 <div class="swiper-wrapper">
                     {% for listing in listings %}
-                        <div class="swiper-slide text-center" style="background: transparent;">
+                        <div class="swiper-slide  text-center" style="background: transparent">
                             <h3 class="text-secondary-emphasis fs-base fw-normal mb-2">{{ listing.name }}</h3>
                             <p class="h4 mb-4">₹{{ listing.price }}</p>
                             <a class="btn btn-lg btn-dark rounded-pill" href="">
@@ -391,10 +409,9 @@
             </div>
         </div>
     </section>
-
     <!-- Categories -->
     <section class="container py-5 my-2 my-sm-3 mb-md-2 mt-lg-4 my-xl-5">
-            <!-- Heading -->
+        <!-- Heading -->
         <div class="d-flex align-items-center justify-content-between border-bottom pb-3 pb-md-4">
             <h2 class="h3 mb-0">What we offer</h2>
         </div>
