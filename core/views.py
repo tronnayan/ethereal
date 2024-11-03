@@ -32,3 +32,6 @@ class CoreViewSet(ViewSet):
         all_products = category.items.all().order_by('-pk')
         return render(request, 'category_page.html',
                       {"category": category, "page": "detail", "all_products": all_products})
+
+    def get_checkout_page(self, request):
+        pass
