@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% block body_content %}
+<div class="container pt-4 pt-md-5 pb-5 mt-sm-3 mt-md-0 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
+    <div class="row">
+        <div class="col-xl-10 offset-xl-1">
+            <h1 class="h3 pb-2 pb-md-3">Complete your order</h1>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Cart items -->
+        <div class="col-lg-6 col-xl-5 offset-xl-1 mb-5 mb-lg-0">
+            <div class="vstack gap-4" id="checkoutCartItems">
+                <!-- Cart items will be rendered here by JavaScript -->
+            </div>
+            <div class="border-top mt-4 pt-4">
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="fw-medium">Subtotal:</span>
+                    <span class="fw-medium" id="checkoutSubtotal">₹0</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="fw-medium">Shipping:</span>
+                    <span class="fw-medium">Free</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="fw-medium">Total:</span>
+                    <span class="fw-bold fs-lg" id="checkoutTotal">₹0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Address Form -->
+        <div class="col-lg-5 col-xl-4 offset-lg-1">
+            <form id="checkoutForm" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Full Name</label>
+                    <div class="position-relative">
+                        <i class="ci-user position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                        <input type="text" class="form-control form-icon-start rounded-pill" id="name" required placeholder="Your full name">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <div class="position-relative">
+                        <i class="ci-mail position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                        <input type="email" class="form-control form-icon-start rounded-pill" id="email" required placeholder="your@email.com">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <div class="position-relative">
+                        <i class="ci-phone position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                        <input type="tel" class="form-control form-icon-start rounded-pill" id="phone" required placeholder="Your phone number">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="pincode" class="form-label">PIN Code</label>
+                    <div class="position-relative">
+                        <i class="ci-map-pin position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                        <input type="text" class="form-control form-icon-start rounded-pill" id="pincode" required placeholder="6-digit PIN code">
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="address" class="form-label">Full Address</label>
+                    <textarea class="form-control rounded-4" id="address" rows="3" required placeholder="House/Flat no., Street, Locality, City, State"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-success w-100 rounded-pill d-flex align-items-center justify-content-center">
+                    <i class="ci-whatsapp fs-xl me-2"></i>
+                    Place Order on WhatsApp
+                </button>
+
+                <div class="d-flex align-items-center justify-content-center fs-xs text-body-secondary mt-3">
+                    <i class="ci-security me-1"></i>
+                    Your information is secure
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+// Function to format price in Indian Rupees
+function formatPrice(price) {
+    return '₹' + parseFloat(price).toLocaleString('en-IN');
+}
+
+// Function to render cart items
+function renderCheckoutItems() {
+    const cartItems = cart.items;
+    const container = document.getElementById('checkoutCartItems');
+    const subtotalEl = document.getElementById('checkoutSubtotal');
+    const totalEl = document.getElementById('checkoutTotal');
+
+    if (!container) return;
+
+    let html = '';
+    let subtotal = 0;
+
+    cartItems.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+
+        html += `
+        <div class="d-flex align-items-center">
+            <a class="flex-shrink-0" href="#" style="width: 142px">
+                <div class="ratio bg-body-tertiary rounded overflow-hidden" style="--cz-aspect-ratio: calc(110 / 142 * 100%)">
+                    <img src="${item.image}" alt="${item.name}" class="object-fit-cover">
+                </div>
+            </a>
+            <div class="w-100 min-w-0 ps-3">
+                <h5 class="d-flex animate-underline mb-2">
+                    <span class="d-block fs-sm fw-medium text-truncate animate-target">${item.name}</span>
+                </h5>
+                <div class="fs-sm text-body-secondary mb-2">Quantity: ${item.quantity}</div>
+                <div class="h6 mb-0">${formatPrice(itemTotal)}</div>
+            </div>
+        </div>
+        `;
+    });
+
+    container.innerHTML = html;
+    subtotalEl.textContent = formatPrice(subtotal);
+    totalEl.textContent = formatPrice(subtotal); // Since shipping is free
+}
+
+// Function to handle form submission
+function handleCheckoutSubmit(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    if (!form.checkValidity()) {
+        e.stopPropagation();
+        form.classList.add('was-validated');
+        return;
+    }
+
+    // Prepare order message for WhatsApp
+    let message = "👋 Hello! I'm interested in purchasing these items:\n\n";
+
+    // Add order items first
+    cart.items.forEach(item => {
+        message += `▪️ ${item.name} - ${item.quantity} pieces at ${formatPrice(item.price)} each\n`;
+    });
+
+    // Add total
+    const total = cart.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    message += `\n💰 Total: ${formatPrice(total)}\n\n`;
+
+    // Add customer details
+    message += "My delivery details:\n";
+    message += `📝 Name: ${document.getElementById('name').value}\n`;
+    message += `📱 Phone: ${document.getElementById('phone').value}\n`;
+    message += `📍 Address: ${document.getElementById('address').value}\n`;
+    message += `📮 PIN Code: ${document.getElementById('pincode').value}\n`;
+    message += `📧 Email: ${document.getElementById('email').value}\n\n`;
+
+    message += "Please let me know if these items are available and how to proceed with the payment. Thank you! 🙏";
+
+    // Encode message for WhatsApp
+    const encodedMessage = encodeURIComponent(message);
+
+    // Remove any '+' from the phone number as it's not needed in the URL
+    const whatsappNumber = "919755055554"; // Remove the '+' from the number
+
+    // Open WhatsApp with the message
+    window.open(`https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`);
+}
+
+// Initialize checkout page
+document.addEventListener('DOMContentLoaded', () => {
+    renderCheckoutItems();
+    document.getElementById('checkoutForm').addEventListener('submit', handleCheckoutSubmit);
+});
+</script>
+{% endblock %}

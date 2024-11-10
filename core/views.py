@@ -34,4 +34,4 @@ class CoreViewSet(ViewSet):
                       {"category": category, "page": "detail", "all_products": all_products})
 
     def get_checkout_page(self, request):
-        pass
+        return render(request, 'checkout.html', {})
