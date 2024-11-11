@@ -168,6 +168,32 @@ function handleCheckoutSubmit(e) {
 
     // Open WhatsApp with the message
     window.open(`https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`);
+        // Clear the cart after opening WhatsApp
+    setTimeout(() => {
+        // Clear cart
+        cart.items = [];
+        cart.saveCart();
+
+        // Show success message
+        const alert = document.createElement('div');
+        alert.className = 'alert alert-success position-fixed top-0 start-50 translate-middle-x mt-3';
+        alert.style.zIndex = '1050';
+        alert.innerHTML = `
+            <i class="ci-check-circle me-2"></i>
+            Order placed successfully! Your cart has been cleared.
+        `;
+        document.body.appendChild(alert);
+
+        // Remove alert after 3 seconds
+        setTimeout(() => {
+            alert.remove();
+        }, 3000);
+
+        // Redirect to home page after a delay
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 2000);
+    }, 1000);
 }
 
 // Initialize checkout page
