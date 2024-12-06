@@ -140,26 +140,21 @@
             "nextEl": ".btn-next"
           }
         }'>
-                        <div class="swiper-wrapper">
-                            {% for listing in listings %}
-
-                                <div class="swiper-slide" data-swiper-binded="#description{{ forloop.counter }}">
-                                    <div class="ratio "
-                                         style="--cz-aspect-ratio: calc(400 / 636 * 100%)">
-                                        <!-- Background blurred image -->
-                                        <div class="position-absolute w-100 h-100"
-                                             style="filter: blur(8px); opacity: 0.3; background-image: url('{{ listing.get_primary_image }}'); background-size: cover; background-position: center;"></div>
-                                        <!-- Main image -->
-                                        <a  href="/listing/{{ listing.slug }}/">
-                                        <img src="{{ listing.get_primary_image }}"
-                                             alt="{{ listing.name }}"
-                                             class="position-relative">
-                                            </a>
-                                    </div>
-                                </div>
-
-                            {% endfor %}
-                        </div>
+<div class="swiper-wrapper">
+    {% for listing in listings %}
+    <div class="swiper-slide" data-swiper-binded="#description{{ forloop.counter }}">
+        <div class="position-relative" style="height: calc(100vh - 250px); max-height: 600px; min-height: 400px">
+            <!-- Main image container -->
+            <a href="/listing/{{ listing.slug }}/" class="d-block h-100">
+                <img src="{{ listing.get_primary_image }}"
+                     alt="{{ listing.name }}"
+                     class="w-100 h-100 position-relative"
+                     style="object-fit: contain; padding: 20px;">
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
                     </div>
                 </div>
 
