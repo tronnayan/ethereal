@@ -74,3 +74,23 @@ class ListingCategory(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+# categories = [
+#     "Room Decor",
+#     "Special Occasion Gifts",
+#     "Themed Gift Boxes & Albums",
+#     "Home Decor"
+# ]
+#
+# listing = Listing.objects.create(name='Wooden Photo Box', description="Cherish your precious memories in our unique pull-out photo album box, beautifully crafted from premium wood. This ingenious design features an accordion-style photo strip that gracefully unfolds to display your favorite moments in sequence, while staying safely stored in an elegant wooden case. The lid can be personalized with your chosen text, making each box uniquely yours. Perfect for wedding photos, family memories, anniversaries, or any special moments worth preserving.", price=1799)
+# images = [
+#     'https://i.etsystatic.com/51098660/r/il/ba0b41/6132615869/il_1588xN.6132615869_jhoi.jpg',
+#     'https://i.etsystatic.com/51098660/r/il/ed993c/6132615159/il_1588xN.6132615159_kkof.jpg',
+#     'https://i.etsystatic.com/51098660/r/il/ed793c/6132614961/il_1588xN.6132614961_h0z5.jpg',
+#     'https://i.etsystatic.com/51098660/r/il/02c610/6468468074/il_1588xN.6468468074_ioad.jpg'
+# ]
+# for img in images:
+#     ListingImage.objects.create(image_url=img, listing=listing)
+# images = ['https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im1.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im2.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im3.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im4.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im5.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im6.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im7.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im8.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im9.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/01.png']
+# listing = Listing.objects.create(name='Faceless Illustrations', description="Discover the beauty of minimalist storytelling through our evocative Faceless Illustrations collection. Each piece captures the essence of human emotion and movement without facial features, creating a universal connection that transcends individual identity", price=119)

@@ -26,7 +26,7 @@
                                 <span class="hover-effect-target position-absolute top-0 start-0 w-100 h-100 bg-black bg-opacity-25 opacity-0 z-1"></span>
                                 <i class="ci-zoom-in hover-effect-target fs-3 text-white position-absolute top-50 start-50 translate-middle opacity-0 z-2"></i>
                                 <div class="ratio ratio-1x1 hover-effect-target">
-                                    <img src="{{ image.image_url }}" alt="Image">
+                                    <img src="{{ image.image_url }}" alt="Image" style="object-fit: contain">
                                 </div>
                             </a>
                         </div>
@@ -42,7 +42,7 @@
                                             <span class="hover-effect-target position-absolute top-0 start-0 w-100 h-100 bg-black bg-opacity-25 opacity-0 z-1"></span>
                                             <i class="ci-zoom-in hover-effect-target fs-3 text-white position-absolute top-50 start-50 translate-middle opacity-0 z-2"></i>
                                             <div class="ratio ratio-1x1 hover-effect-target">
-                                                <img src="{{ image.image_url }}" alt="Image">
+                                                <img src="{{ image.image_url }}" alt="Image"  style="object-fit: contain">
                                             </div>
                                         </a>
                                     </div>
@@ -186,28 +186,28 @@
         <section class="row pb-5 mb-2 mb-sm-3 mb-lg-4 mb-xl-5">
             <div class="col-md-7 col-xl-8 mb-xxl-3">
                 <p>{{ listing.description }}</p>
-                <ul class="list-unstyled pb-md-2 pb-lg-3">
-                    <li class="mt-1"><span class="h6 mb-0">Dimensions:</span> {{ listing.dimensions }}</li>
-                    <li class="mt-1"><span class="h6 mb-0">Weight:</span> {{ listing.weight }} Kilogram</li>
-                    <li class="mt-1"><span class="h6 mb-0">Shipping Charges:</span> ₹{{ listing.shipping_charges }}</li>
-                </ul>
+{#                <ul class="list-unstyled pb-md-2 pb-lg-3">#}
+{#                    <li class="mt-1"><span class="h6 mb-0">Dimensions:</span> {{ listing.dimensions }}</li>#}
+{#                    <li class="mt-1"><span class="h6 mb-0">Weight:</span> {{ listing.weight }} Kilogram</li>#}
+{#                    <li class="mt-1"><span class="h6 mb-0">Shipping Charges:</span> ₹{{ listing.shipping_charges }}</li>#}
+{#                </ul>#}
 
-                <div class="accordion accordion-alt-icon" id="productAccordion">
-                    <div class="accordion-item">
-                        <h3 class="accordion-header" id="headingProductInfo">
-                            <button type="button" class="accordion-button animate-underline fs-xl collapsed"
-                                    data-bs-toggle="collapse" data-bs-target="#productInfo" aria-expanded="false"
-                                    aria-controls="productInfo">
-                                <span class="animate-target me-2">Product info</span>
-                            </button>
-                        </h3>
-                        <div class="accordion-collapse collapse" id="productInfo" aria-labelledby="headingProductInfo"
-                             data-bs-parent="#productAccordion">
-                            <div class="accordion-body fs-base">{{ listing.description }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{#                <div class="accordion accordion-alt-icon" id="productAccordion">#}
+{#                    <div class="accordion-item">#}
+{#                        <h3 class="accordion-header" id="headingProductInfo">#}
+{#                            <button type="button" class="accordion-button animate-underline fs-xl collapsed"#}
+{#                                    data-bs-toggle="collapse" data-bs-target="#productInfo" aria-expanded="false"#}
+{#                                    aria-controls="productInfo">#}
+{#                                <span class="animate-target me-2">Product info</span>#}
+{#                            </button>#}
+{#                        </h3>#}
+{#                        <div class="accordion-collapse collapse" id="productInfo" aria-labelledby="headingProductInfo"#}
+{#                             data-bs-parent="#productAccordion">#}
+{#                            <div class="accordion-body fs-base">{{ listing.description }}#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
             </div>
         </section>
 
