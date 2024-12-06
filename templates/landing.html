@@ -115,7 +115,7 @@
                 </div>
 
                 <!-- Prev button -->
-                <div class="col-auto col-sm-1 order-1 order-lg-2 d-flex align-items-center justify-content-center">
+                <div class="col-auto col-sm-1 order-1 order-lg-2 d-flex align-items-center justify-content-center mb-2">
                     <button type="button"
                             class="btn-prev btn btn-lg btn-icon btn-outline-secondary rounded-circle animate-slide-start">
                         <i class="ci-chevron-left fs-xl animate-target"></i>
@@ -145,9 +145,16 @@
                         <div class="swiper-wrapper">
                             {% for listing in listings %}
                                 <div class="swiper-slide" data-swiper-binded="#description{{ forloop.counter }}">
-                                    <div class="ratio"
-                                         style="height: 400px; width: 400px; margin: 0 auto; padding: 10px; box-sizing: border-box; border-radius: 8px;">
-                                        <img src="{{ listing.get_primary_image }}" alt="{{ listing.name }}">
+                                    <div class="ratio bg-light position-relative overflow-hidden rounded-circle"
+                                         style="height: 400px; width: 400px; margin: 0 auto; box-sizing: border-box;">
+                                        <!-- Background blurred image -->
+                                        <div class="position-absolute w-100 h-100"
+                                             style="filter: blur(8px); opacity: 0.3; background-image: url('{{ listing.get_primary_image }}'); background-size: cover; background-position: center;"></div>
+                                        <!-- Main image -->
+                                        <img src="{{ listing.get_primary_image }}"
+                                             alt="{{ listing.name }}"
+                                             class="position-relative"
+                                             style="width: 100%; height: 100%; object-fit: contain; padding: 40px;">
                                     </div>
                                 </div>
                             {% endfor %}
@@ -156,7 +163,7 @@
                 </div>
 
                 <!-- Next button -->
-                <div class="col-auto col-sm-1 order-2 order-sm-3 order-lg-4 d-flex align-items-center justify-content-center">
+                <div class="col-auto col-sm-1 order-2 order-sm-3 order-lg-4 d-flex align-items-center justify-content-center mb-2">
                     <button type="button"
                             class="btn-next btn btn-lg btn-icon btn-outline-secondary rounded-circle animate-slide-end">
                         <i class="ci-chevron-right fs-xl animate-target"></i>
@@ -233,34 +240,34 @@
     <!-- Categories -->
     <section class="container py-5 my-2 my-sm-3 mb-md-2 mt-lg-4 my-xl-5">
         <!-- Heading -->
-        <div class="d-flex align-items-center justify-content-between border-bottom pb-3 pb-md-4">
-            <h2 class="h3 mb-0">What we offer</h2>
-        </div>
-        <div class="overflow-x-auto pt-xxl-3" data-simplebar="" data-simplebar-auto-hide="false">
-            <div class="row flex-nowrap flex-md-wrap justify-content-md-center g-0 gap-4 gap-md-0">
-
-                {% for category in listing_categories %}
-                    <!-- Category -->
-                    <div class="col col-md-4 col-lg-3 col-xl-2 mb-4">
-                        <div class="category-card w-100 text-center px-1 px-lg-2 px-xxl-3 mx-auto"
-                             style="min-width: 165px">
-                            <div class="category-card-body">
-                                <a class="d-block text-decoration-none" href="/category/{{ category.id }}">
-                                    <div class="bg-body-tertiary rounded-pill mb-3 mx-auto" style="max-width: 164px">
-                                        <div class="ratio ratio-1x1">
-                                            <img src="{{ category.logo }}"
-                                                 class="rounded-pill"
-                                                 alt="Image">
-                                        </div>
-                                    </div>
-                                    <h3 class="category-card-title h6 text-truncate">{{ category.name | title }}</h3>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
+{#        <div class="d-flex align-items-center justify-content-between border-bottom pb-3 pb-md-4">#}
+{#            <h2 class="h3 mb-0">What we offer</h2>#}
+{#        </div>#}
+{#        <div class="overflow-x-auto pt-xxl-3" data-simplebar="" data-simplebar-auto-hide="false">#}
+{#            <div class="row flex-nowrap flex-md-wrap justify-content-md-center g-0 gap-4 gap-md-0">#}
+{##}
+{#                {% for category in listing_categories %}#}
+{#                    <!-- Category -->#}
+{#                    <div class="col col-md-4 col-lg-3 col-xl-2 mb-4">#}
+{#                        <div class="category-card w-100 text-center px-1 px-lg-2 px-xxl-3 mx-auto"#}
+{#                             style="min-width: 165px">#}
+{#                            <div class="category-card-body">#}
+{#                                <a class="d-block text-decoration-none" href="/category/{{ category.id }}">#}
+{#                                    <div class="bg-body-tertiary rounded-pill mb-3 mx-auto" style="max-width: 164px">#}
+{#                                        <div class="ratio ratio-1x1">#}
+{#                                            <img src="{{ category.logo }}"#}
+{#                                                 class="rounded-pill"#}
+{#                                                 alt="Image">#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                    <h3 class="category-card-title h6 text-truncate">{{ category.name | title }}</h3>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        </div>#}
     </section>
 
 

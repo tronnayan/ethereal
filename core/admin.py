@@ -50,7 +50,7 @@ class ListingAdmin(ModelAdminMod):
         'is_featured',
     )
     search_fields = ('name',)
-    readonly_fields = ('video_url', 'sample_link', 'weight', 'dimensions', 'listing_tags')
+    readonly_fields = ('video_url', 'sample_link', 'weight', 'dimensions', 'listing_tags', 'category','default_color')
 
 
 @admin.register(ListingImage)

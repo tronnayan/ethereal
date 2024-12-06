@@ -11,7 +11,7 @@ class CoreViewSet(ViewSet):
         pass
 
     def get_landing_page(self, request):
-        listings = Listing.objects.all().select_related('category').order_by('-pk')
+        listings = Listing.objects.filter(is_featured=True).select_related('category').order_by('-pk')
         listings_products = Listing.objects.all().select_related('category').order_by('-pk')
         listing_categories = ListingCategory.objects.all().order_by('pk')
         context = {
