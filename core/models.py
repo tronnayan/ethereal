@@ -40,6 +40,7 @@ class ListingImage(BaseModel):
 
 class Listing(BaseModel):
     name = models.CharField(max_length=100)
+    slug = models.CharField(max_length=200, unique=True, null=True)
     description = models.CharField(max_length=1000, null=True)
     price = models.IntegerField(default=50)
     shipping_charges = models.IntegerField(default=50)

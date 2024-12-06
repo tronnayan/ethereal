@@ -227,7 +227,7 @@
                         <div class="swiper-slide swiper-slide-custom  text-center">
                             <h3 class="text-secondary-emphasis fs-base fw-normal mb-2">{{ listing.name }}</h3>
                             <p class="h4 mb-4">₹{{ listing.price }}</p>
-                            <a class="btn btn-lg btn-dark rounded-pill" href="/listing/{{ listing.id }}/">
+                            <a class="btn btn-lg btn-dark rounded-pill" href="/listing/{{ listing.slug }}/">
                                 Shop now
                                 <i class="ci-chevron-right fs-lg ms-2 me-n2"></i>
                             </a>
@@ -323,7 +323,7 @@
                         <div class="swiper-slide">
                             <div class="animate-underline">
                                 <a class="hover-effect-opacity ratio ratio-1x1 d-block mb-3"
-                                   href="/listing/{{ listing.id }}/">
+                                   href="/listing/{{ listing.slug }}/">
                                     <img src="{{ listing.get_primary_image }}"
                                          class="hover-effect-target opacity-100"
                                          alt="Primary Image">
@@ -332,7 +332,7 @@
                                          alt="Item Image">
                                 </a>
                                 <h3 class="mb-2">
-                                    <a class="d-block fs-sm fw-medium text-truncate" href="/listing/{{ listing.id }}/">
+                                    <a class="d-block fs-sm fw-medium text-truncate" href="/listing/{{ listing.slug }}/">
                                         <span class="animate-target">{{ listing.name }}</span>
                                     </a>
                                 </h3>

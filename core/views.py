@@ -21,8 +21,8 @@ class CoreViewSet(ViewSet):
         }
         return render(request, 'landing.html', context)
 
-    def get_listing_detail_page(self, request, listing_id: int):
-        listing = Listing.objects.get(pk=listing_id)
+    def get_listing_detail_page(self, request, slug: str):
+        listing = Listing.objects.get(slug=slug)
         related_products = Listing.objects.all().order_by('-pk')
         return render(request, 'listing_detail.html',
                       {"listing": listing, "page": "detail", "related_products": related_products})
