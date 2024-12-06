@@ -50,7 +50,6 @@ class Listing(BaseModel):
     listing_tags = models.ManyToManyField(ListingTag, related_name='tags')
     is_featured = models.BooleanField(default=False)
     category = models.ForeignKey('ListingCategory', related_name='items', on_delete=models.CASCADE, null=True)
-    default_color = models.CharField(default=None, null=True, max_length=100)
 
     def get_primary_image(self):
         primary_image = self.images.filter(is_primary=True).first()
@@ -96,9 +95,9 @@ class ListingCategory(BaseModel):
 # listing = Listing.objects.create(name='Faceless Illustrations', description="Discover the beauty of minimalist storytelling through our evocative Faceless Illustrations collection. Each piece captures the essence of human emotion and movement without facial features, creating a universal connection that transcends individual identity", price=119)
 
 
-images = [
-    'https://i.etsystatic.com/20183842/r/il/ab5dca/2735048961/il_1588xN.2735048961_k9s4.jpg',
-    'https://i.etsystatic.com/20183842/r/il/b6e783/2687365808/il_1588xN.2687365808_3c43.jpg',
-    'https://i.etsystatic.com/20183842/r/il/47cca7/2735049573/il_1588xN.2735049573_7qh6.jpg',
-    'https://i.etsystatic.com/20183842/r/il/450c42/2710231772/il_1588xN.2710231772_fejb.jpg',
-]
+# images = [
+#     'https://i.etsystatic.com/20183842/r/il/ab5dca/2735048961/il_1588xN.2735048961_k9s4.jpg',
+#     'https://i.etsystatic.com/20183842/r/il/b6e783/2687365808/il_1588xN.2687365808_3c43.jpg',
+#     'https://i.etsystatic.com/20183842/r/il/47cca7/2735049573/il_1588xN.2735049573_7qh6.jpg',
+#     'https://i.etsystatic.com/20183842/r/il/450c42/2710231772/il_1588xN.2710231772_fejb.jpg',
+# ]

@@ -39,8 +39,7 @@ class ListingAdmin(ModelAdminMod):
         'description',
         'price',
         'shipping_charges',
-        'is_featured',
-        'default_color'
+        'is_featured'
     )
     list_filter = (
         'created_at',
@@ -50,7 +49,7 @@ class ListingAdmin(ModelAdminMod):
         'is_featured',
     )
     search_fields = ('name',)
-    readonly_fields = ('video_url', 'sample_link', 'weight', 'dimensions', 'listing_tags', 'category','default_color')
+    readonly_fields = ('video_url', 'sample_link', 'weight', 'dimensions', 'listing_tags', 'category')
 
 
 @admin.register(ListingImage)
