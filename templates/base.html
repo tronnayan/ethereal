@@ -17,20 +17,24 @@
 
     <meta charset="utf-8">
     <!-- Viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
 
     <!-- SEO Meta Tags -->
     <title>Little Artist - Best Custom Art & Illustrations in Indore | Handmade Gifts</title>
 
-    <meta name="description" content="🎨 Custom artwork service in Indore, India. Personalized illustrations, name art, faceless portraits & handmade gifts. Best prices starting at ₹119. Order now for unique art pieces! ✨">
+    <meta name="description"
+          content="🎨 Custom artwork service in Indore, India. Personalized illustrations, name art, faceless portraits & handmade gifts. Best prices starting at ₹119. Order now for unique art pieces! ✨">
 
-    <meta name="keywords" content="custom art Indore, handmade gifts Indore, personalized illustrations, name art, faceless portraits, custom portraits Indore, affordable art gifts, artistic gifts Indore, custom birthday gifts, handmade art India, personalized gifts Indore, art studio Indore, custom artwork Madhya Pradesh">
+    <meta name="keywords"
+          content="custom art Indore, handmade gifts Indore, personalized illustrations, name art, faceless portraits, custom portraits Indore, affordable art gifts, artistic gifts Indore, custom birthday gifts, handmade art India, personalized gifts Indore, art studio Indore, custom artwork Madhya Pradesh">
 
     <meta name="author" content="Little Artist">
 
     <!-- Open Graph Meta Tags for Social Media -->
     <meta property="og:title" content="Little Artist - Custom Artwork & Handmade Gifts in Indore">
-    <meta property="og:description" content="Create beautiful memories with personalized artwork. Best custom illustrations, name art & faceless portraits in Indore. Starting at ₹119 only!">
+    <meta property="og:description"
+          content="Create beautiful memories with personalized artwork. Best custom illustrations, name art & faceless portraits in Indore. Starting at ₹119 only!">
     <meta property="og:image" content="/static/little_artist.png">
     <meta property="og:url" content="https://littleartist.in/">
 
@@ -78,11 +82,15 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEP9CPKBM8"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-KEP9CPKBM8');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-KEP9CPKBM8');
     </script>
     {% block css_content %}
     {% endblock %}
@@ -194,7 +202,10 @@
                 {% if page == 'detail' %}
                     <img style="width: 200px" src="/static/assets/little_artist.svg">
                 {% else %}
-                    Where Little Hands Create Big Dreams
+                    <!-- Show SVG for small devices, text for larger -->
+                    <img class="d-block d-md-none" style="width: 200px" src="/static/assets/little_artist.svg"
+                         alt="Little Artist">
+                    <span class="d-none d-md-block">Where Little Hands Create Big Dreams</span>
                 {% endif %}
             </div>
         </a>
@@ -230,38 +241,40 @@
         <div class="row pb-5 justify-content-center">
             <!-- Custom Art Request + Social Links -->
             <div class="col-md col-xl-8 text-center">
-    <div class="text-center px-sm-4 mx-auto" style="max-width: 568px">
-        <h3 class="pb-1 mb-2 text-center">Want Custom Artwork Created?</h3>
-        <p class="fs-sm text-body pb-2 pb-sm-3 text-center">Share your vision and let's bring it to life! Click below to discuss your custom art ideas on WhatsApp.</p>
+                <div class="text-center px-sm-4 mx-auto" style="max-width: 568px">
+                    <h3 class="pb-1 mb-2 text-center">Want Custom Artwork Created?</h3>
+                    <p class="fs-sm text-body pb-2 pb-sm-3 text-center">Share your vision and let's bring it to life!
+                        Click below to discuss your custom art ideas on WhatsApp.</p>
 
-        <!-- WhatsApp Button -->
-        <a href="https://wa.me/+919755055554" target="_blank" class="btn btn-success btn-lg rounded-pill px-4 mb-3">
-            <i class="ci-whatsapp me-2"></i>Chat on WhatsApp
-        </a>
+                    <!-- WhatsApp Button -->
+                    <a href="https://wa.me/+919755055554" target="_blank"
+                       class="btn btn-success btn-lg rounded-pill px-4 mb-3">
+                        <i class="ci-whatsapp me-2"></i>Chat on WhatsApp
+                    </a>
 
-        <!-- Social Media Links -->
-        <div class="d-flex justify-content-center gap-2 pt-4 pt-md-5 mt-1 mt-md-0">
-            <a class="btn btn-icon fs-base btn-outline-secondary border-0"
-               href="https://www.youtube.com/@ayuree296"
-               target="_blank"
-               data-bs-toggle="tooltip"
-               data-bs-template="<div class=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div class=&quot;tooltip-inner bg-transparent text-white p-0&quot;></div></div>"
-               title="See my art on YouTube"
-               aria-label="Follow my art journey on YouTube">
-                <i class="ci-youtube"></i>
-            </a>
-            <a class="btn btn-icon fs-base btn-outline-secondary border-0"
-               href="https://www.instagram.com/ayuree_arts/"
-               target="_blank"
-               data-bs-toggle="tooltip"
-               data-bs-template="<div class=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div class=&quot;tooltip-inner bg-transparent text-white p-0&quot;></div></div>"
-               title="See latest artwork"
-               aria-label="See my latest artwork on Instagram">
-                <i class="ci-instagram"></i>
-            </a>
-        </div>
-    </div>
-</div>
+                    <!-- Social Media Links -->
+                    <div class="d-flex justify-content-center gap-2 pt-4 pt-md-5 mt-1 mt-md-0">
+                        <a class="btn btn-icon fs-base btn-outline-secondary border-0"
+                           href="https://www.youtube.com/@ayuree296"
+                           target="_blank"
+                           data-bs-toggle="tooltip"
+                           data-bs-template="<div class=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div class=&quot;tooltip-inner bg-transparent text-white p-0&quot;></div></div>"
+                           title="See my art on YouTube"
+                           aria-label="Follow my art journey on YouTube">
+                            <i class="ci-youtube"></i>
+                        </a>
+                        <a class="btn btn-icon fs-base btn-outline-secondary border-0"
+                           href="https://www.instagram.com/ayuree_arts/"
+                           target="_blank"
+                           data-bs-toggle="tooltip"
+                           data-bs-template="<div class=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div class=&quot;tooltip-inner bg-transparent text-white p-0&quot;></div></div>"
+                           title="See latest artwork"
+                           aria-label="See my latest artwork on Instagram">
+                            <i class="ci-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- Copyright -->
         <p class="fs-xs text-body text-center pt-lg-4 mt-n2 mt-md-0 mb-0">
