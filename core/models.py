@@ -94,3 +94,11 @@ class ListingCategory(BaseModel):
 #     ListingImage.objects.create(image_url=img, listing=listing)
 # images = ['https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im1.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im2.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im3.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im4.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im5.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im6.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im7.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im8.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/im9.webp', 'https://botally.s3.ap-southeast-1.amazonaws.com/ayuree_arts/faceless_illustrations/01.png']
 # listing = Listing.objects.create(name='Faceless Illustrations', description="Discover the beauty of minimalist storytelling through our evocative Faceless Illustrations collection. Each piece captures the essence of human emotion and movement without facial features, creating a universal connection that transcends individual identity", price=119)
+
+
+images = [
+    'https://i.etsystatic.com/20183842/r/il/ab5dca/2735048961/il_1588xN.2735048961_k9s4.jpg',
+    'https://i.etsystatic.com/20183842/r/il/b6e783/2687365808/il_1588xN.2687365808_3c43.jpg',
+    'https://i.etsystatic.com/20183842/r/il/47cca7/2735049573/il_1588xN.2735049573_7qh6.jpg',
+    'https://i.etsystatic.com/20183842/r/il/450c42/2710231772/il_1588xN.2710231772_fejb.jpg',
+]
