@@ -68,7 +68,7 @@
                     <div class="fs-xs text-body-secondary mb-3">{{ listing.uuid | upper }}</div>
                     <h1 class="fs-xl fw-medium">{{ listing.name | title }}</h1>
                     <div class="h4 fw-bold mb-4">₹{{ listing.price }}
-                        <del class="fs-sm fw-normal text-body-tertiary">₹ 299</del>
+                        <del class="fs-sm fw-normal text-body-tertiary">₹ {{ listing.get_spiked_price }}</del>
                     </div>
                     <ul class="list-unstyled fs-sm text-body-emphasis mb-4">
     <!-- Customization -->
