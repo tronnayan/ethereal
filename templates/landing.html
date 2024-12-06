@@ -57,23 +57,22 @@
             z-index: 2;
         }
     </style>
-    <style>
-    /* Add these styles to your CSS */
-    .swiper-slide img {
-        transition: transform 0.3s ease;
-    }
-
-    @media (max-width: 768px) {
-        .swiper-slide div {
-            height: 300px !important;
-        }
-
-        .swiper-slide a {
-            width: 280px !important;
-            height: 280px !important;
-        }
-    }
-</style>
+{#    <style>#}
+{#        .swiper-slide img {#}
+{#            transition: transform 0.3s ease;#}
+{#        }#}
+{#    #}
+{#        @media (max-width: 768px) {#}
+{#            .swiper-slide div {#}
+{#                height: 300px !important;#}
+{#            }#}
+{#    #}
+{#            .swiper-slide a {#}
+{#                width: 280px !important;#}
+{#                height: 280px !important;#}
+{#            }#}
+{#        }#}
+{#    </style>#}
 {% endblock %}
 {% block body_content %}
     <!-- Hero slider -->
@@ -227,14 +226,14 @@
 
             <!-- Linked captions (controlled slider) -->
             <div style="background: transparent" class="swiper" id="captions" data-swiper='{
-    "allowTouchMove": false,
-    "loop": true,
-    "effect": "fade",
-    "fadeEffect": {
-        "crossFade": true
-    },
-    "speed": 600
-}'>
+                    "allowTouchMove": false,
+                    "loop": true,
+                    "effect": "fade",
+                    "fadeEffect": {
+                        "crossFade": true
+                    },
+                    "speed": 600
+                }'>
                 <div class="swiper-wrapper">
                     {% for listing in listings %}
                         <div class="swiper-slide swiper-slide-custom text-center">
