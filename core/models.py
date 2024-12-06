@@ -65,7 +65,7 @@ class Listing(BaseModel):
         return self.images.all().order_by('-pk')[2:]
 
     def get_spiked_price(self):
-        return self.price * 0.3
+        return self.price * 1.3
 
     def __str__(self):
         return self.name
